@@ -1,0 +1,46 @@
+.modal_container {
+    position: fixed;
+    z-index: 1300;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_box {
+    width: 90%;
+    max-width: 387px;
+    padding: 30px 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    max-height: calc(100% - 200px);
+}
+
+.btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.close_btn {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.login_btn {
+    text-align: center;
+    font-size: 14px;
+    color: #39c9bb;
+    cursor: pointer;
+}

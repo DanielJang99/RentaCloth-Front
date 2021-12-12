@@ -1,0 +1,286 @@
+.header {
+    color: grey;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.stepper_wrapper {
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px 0 20px;
+}
+
+.step_label {
+    color: grey;
+    font-size: 11px;
+    transform: translateY(-60px);
+}
+
+.rent_hero {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    height: 160px;
+}
+
+.product_image_wrapper {
+    padding: 15px;
+}
+
+.product_image {
+    width: 100%;
+    max-width: 110px;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.product_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.product_brand {
+    font-size: 11px;
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.product_name {
+    font-size: 14px;
+    color: grey;
+    word-break: keep-all;
+}
+
+.rental_date_modal_wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.next_step_btn {
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    height: 60px;
+    background-color: #39c9bb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.next_step_btn:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+.disabled_calendar_day {
+    background-color: rgb(248, 248, 248);
+    width: 100%;
+    cursor: not-allowed;
+}
+
+.calendar_day {
+    background-color: blue;
+    width: 100%;
+}
+
+.rent_unavailable_day {
+    color: red;
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.rent_calendar_price {
+    color: black;
+    position: absolute;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 8px;
+    z-index: 200;
+    margin-right: 4px;
+}
+
+.rent_modal_container {
+    width: 100%;
+    max-width: 430px;
+    overflow: scroll;
+}
+
+.rent_info_container {
+    margin-top: 10px;
+}
+
+.rent_info_header {
+    width: 90%;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    color: gray;
+}
+
+.rent_period_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.calendar_icon {
+    margin-right: 5px;
+}
+
+.rent_date_details {
+    padding: 15px 0;
+}
+
+.rent_date_detail_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+.rent_date_label {
+    font-size: 14px;
+    color: gray;
+}
+
+.price_detail_container {
+    padding: 10px 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.price_header_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price_header {
+    font-size: 14px;
+    color: gray;
+}
+
+.retail_price {
+    font-size: 10px;
+    color: gray;
+}
+
+.price_detail {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.apply_btn {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #39c9bb;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    padding: 30px 0;
+    background-color: white;
+}
+
+.apply_btn:disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
+.step_two_info_label {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.price_highlighter {
+    color: navy;
+    font-weight: bold;
+}
+
+.step_3_header {
+    text-align: center;
+    font-size: 18px;
+    color: gray;
+}
+
+.step_3_info_container {
+    padding: 20px 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.step_3_info_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5px 0;
+}
+
+.step_3_info_key {
+    color: gray;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.step_3_info_val {
+    font-size: 15px;
+    color: gray;
+}
+
+.done_hero {
+    padding: 40px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.done_hero_header {
+    font-size: 24px;
+    color: navy;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.done_hero_message {
+    font-size: 13px;
+    color: gray;
+    line-height: 18px;
+}
+
+.done_hero_message_highlight {
+    color: navy;
+    font-weight: bold;
+}
+
+.done_section_header {
+    font-size: 16px;
+    color: navy;
+    font-weight: bold;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.step_done_info_row {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    margin: 8px 0;
+}

@@ -1,0 +1,8 @@
+RentaCloth:
+    component: "@sls-next/serverless-component"
+    inputs:
+        bucketName: "rentaCloth_front_bucket"
+        name:
+            defaultLambda: "rentaCloth_default_lambda" #Default Lambda의 이름 설정
+            imageLambda: "rentaCloth_image_lambda" # Image Lambda의 이름 설정
+        bucketRegion: "ap-northeast-2" # S3 Bucket 지역 설정

@@ -1,0 +1,35 @@
+.search_bar {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.search_input {
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    transition: 0.3s;
+    /* text-indent: 20px; */
+    text-align: center;
+}
+
+.search_input:focus {
+    outline: none;
+    background-image: none;
+}
+
+.search_input:focus::placeholder {
+    color: transparent;
+}
+
+.search_img {
+    width: 10%;
+    /* height: 20px; */
+    background-image: url(https://img.icons8.com/ios/50/000000/search--v1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    background-position-x: right;
+}

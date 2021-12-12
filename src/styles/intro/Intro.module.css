@@ -1,0 +1,68 @@
+.intro_section {
+    padding-bottom: 30px;
+}
+
+.desc {
+    font-size: 16px;
+    /* word-break: keep-all; */
+    word-spacing: 1px;
+    line-height: 22px;
+}
+
+.green {
+    color: forestgreen;
+}
+
+.quote_container {
+    margin: 0 auto;
+}
+
+.quote_mark {
+    font-size: 28px;
+    margin: 15px 0 -5px;
+    text-align: center;
+}
+
+.quote {
+    font-size: 22px;
+    text-align: center;
+}
+
+.image_wrapper {
+    width: 100%;
+    max-width: 430px;
+    height: fit-content;
+    margin-top: 15px;
+}
+
+.checkbox_container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox_label {
+    font-size: 16px;
+    color: forestgreen;
+    margin-left: 10px;
+}
+
+.checkbox_desc {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.image_label {
+    font-size: 12px;
+    color: gray;
+    text-align: center;
+}
+
+.image {
+    width: 100%;
+}
+
+.desc_step {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 8px 0;
+}

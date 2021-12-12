@@ -1,0 +1,43 @@
+.image_wrapper {
+    width: 30%;
+    margin: 30px auto;
+}
+
+.login_btn_wrapper {
+    text-align: center;
+    font-size: 12px;
+}
+
+.login_btn {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.signup_btn {
+    width: 100%;
+    position: sticky;
+    bottom: 0%;
+    height: 60px;
+    background-color: #39c9bb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.signup_btn:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.confirm_btn {
+    margin-top: 20px;
+    width: 50%;
+    background-color: #39c9bb;
+    padding: 10px 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}

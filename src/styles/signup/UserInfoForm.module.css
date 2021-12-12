@@ -1,0 +1,28 @@
+.input_wrapper {
+    margin: 20px 0;
+}
+
+.input_label {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.text_input {
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    padding: 10px 5%;
+    margin: 3px 0;
+}
+
+.text_input::placeholder {
+    color: grey;
+}
+
+.password_error_msg {
+    text-align: center;
+    font-size: 11px;
+    color: red;
+}

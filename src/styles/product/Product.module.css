@@ -1,0 +1,77 @@
+.product_detail {
+    margin-top: 15px;
+}
+
+.product_detail_container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.product_brand {
+    color: grey;
+    font-size: 12px;
+}
+
+.product_name {
+    font-size: 15px;
+    color: grey;
+}
+
+.product_availability_true {
+    padding: 3px 10px;
+    color: white;
+    font-size: 12px;
+    border-radius: 3px;
+    background-color: #cbc3e3;
+}
+
+.product_availability_false {
+    padding: 3px 10px;
+    color: white;
+    font-size: 12px;
+    border-radius: 3px;
+    background-color: lightcoral;
+}
+
+.white_background {
+    margin-top: 10px;
+
+    background-color: white;
+    padding: 15px 0;
+}
+
+.price_section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.daily_price {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.retail_price {
+    font-size: 12px;
+}
+
+.discount_percentage {
+    color: red;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.down_label {
+    color: red;
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.section_label {
+    color: grey;
+    font-size: 14px;
+    padding-top: 15px;
+}

@@ -1,11 +1,11 @@
 {
-    "theme_color": "#b8e986",
-    "background_color": "#b8e986",
+    "theme_color": "navy",
+    "background_color": "navy",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Renta-Cloth",
-    "short_name": "Renta-Cloth",
+    "name": "RentaCloth",
+    "short_name": "RentaCloth",
     "description": "\ub80c\ud0c0\ud074\ub85c\uc2a4",
     "icons": [
         {

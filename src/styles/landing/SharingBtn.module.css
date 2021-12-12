@@ -1,0 +1,20 @@
+.container {
+    margin: 30px 0;
+}
+
+.header {
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.sharingBtn {
+    text-align: center;
+    background-color: teal;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+}

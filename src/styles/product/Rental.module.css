@@ -1,0 +1,71 @@
+.rent_btn_wrapper {
+    position: sticky;
+    bottom: 0%;
+    height: 60px;
+    background-color: #39c9bb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+.disabled {
+    background-color: gray;
+}
+
+.rent_drawer {
+    width: 100%;
+    max-width: 430px;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+.rent_drawer_paper {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+.rent_modal_box {
+    height: 200px;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 387px;
+}
+
+.form_container {
+    margin-top: 20px;
+}
+
+.rent_modal_container {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.rent_select {
+    /* width: %; */
+    /* max-width: 360px; */
+    max-width: 360px;
+    min-width: 320px;
+}
+
+.modal_btn_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+.modal_cart_btn {
+    background-color: navy;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

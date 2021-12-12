@@ -1,0 +1,45 @@
+.step_title {
+    font-size: 24px;
+    margin: 40px 0 20px;
+    font-weight: 500;
+}
+
+.page_container {
+    padding-bottom: 30px;
+}
+
+.step_detail {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.step_checkbox {
+    display: flex;
+    padding-right: 15px;
+}
+
+.checkbox_wrapper {
+    display: flex;
+    margin-top: -3px;
+}
+
+.step_desc {
+    font-size: 16px;
+    word-break: keep-all;
+}
+
+.step_desc_checkbox {
+    min-width: 60px;
+}
+
+.green {
+    color: forestgreen;
+}
+
+.gif_wrapper {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}

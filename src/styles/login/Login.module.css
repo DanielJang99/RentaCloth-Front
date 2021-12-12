@@ -1,0 +1,46 @@
+.image_wrapper {
+    width: 30%;
+    margin: 30px auto;
+}
+
+.text_input {
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    padding: 10px 5%;
+    margin: 10px 0;
+}
+
+.text_input::placeholder {
+    color: grey;
+}
+
+.error_msg {
+    color: red;
+    text-align: center;
+    font-size: 12px;
+}
+
+.login_btn {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #39c9bb;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.signup_btn_wrapper {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.signup_btn {
+    text-decoration: underline;
+    cursor: pointer;
+}

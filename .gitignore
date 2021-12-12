@@ -39,3 +39,7 @@ yarn-error.log*
 **/public/worker-*.js 
 **/public/worker-*.js.map  
 **/public/sw.js.map 
+
+.env.development
+/package-lock.json
+yarn.lock
