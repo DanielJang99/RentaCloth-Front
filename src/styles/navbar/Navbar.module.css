@@ -1,6 +1,6 @@
 .navbar_container {
     height: 50px;
-    background-color: #1a237e;
+    background-color: #273469;
     display: flex;
     width: 100%;
     align-items: center;
@@ -36,7 +36,7 @@
 
 .drawer_title {
     font-size: 22px;
-    color: navy;
+    color: #273469;
     margin-bottom: 30px;
     font-weight: 500;
     cursor: pointer;
@@ -48,7 +48,7 @@
 
 .drawer_menu {
     font-size: 18px;
-    color: gray;
+    color: #707070;
     font-weight: 500;
     cursor: pointer;
 }

@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "deploy": "serverless"
+        "deploy": "env-cmd -f .env.production serverless"
     },
     "dependencies": {
         "@emotion/react": "^11.6.0",
@@ -19,14 +19,17 @@
         "axios": "^0.24.0",
         "classnames": "^2.3.1",
         "date-fns": "^2.26.0",
+        "env-cmd": "^10.1.0",
         "framer-motion": "^5.3.3",
         "next": "11.1.2",
         "next-pwa": "^5.4.0",
         "react": "17.0.2",
         "react-date-range": "^1.4.0",
         "react-dom": "17.0.2",
-        "react-material-ui-carousel": "^3.1.0",
-        "serverless": "^2.59.0"
+        "react-material-ui-carousel": "^3.1.0"
+    },
+    "devDependencies": {
+        "serverless": "^2.68.0"
     },
     "proxy": "http://localhost:7000/"
 }

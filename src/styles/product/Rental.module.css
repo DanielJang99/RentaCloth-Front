@@ -12,7 +12,7 @@
 }
 
 .disabled {
-    background-color: gray;
+    background-color: #707070;
 }
 
 .rent_drawer {
@@ -61,7 +61,7 @@
 }
 
 .modal_cart_btn {
-    background-color: navy;
+    background-color: #273469;
     width: 100%;
     color: white;
     display: flex;

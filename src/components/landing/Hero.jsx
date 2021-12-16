@@ -10,7 +10,7 @@ function Hero() {
     return (
         <div className={styles.hero_container}>
             <img
-                src="/rentacloth_icon.png"
+                src="/renta_white.png"
                 alt="santa icon"
                 className={styles.santa}
             />

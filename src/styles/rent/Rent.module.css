@@ -130,7 +130,7 @@
     display: flex;
     justify-content: flex-start;
     font-size: 12px;
-    color: gray;
+    color: #707070;
 }
 
 .rent_period_container {
@@ -159,7 +159,7 @@
 
 .rent_date_label {
     font-size: 14px;
-    color: gray;
+    color: #707070;
 }
 
 .price_detail_container {
@@ -176,12 +176,12 @@
 
 .price_header {
     font-size: 14px;
-    color: gray;
+    color: #707070;
 }
 
 .retail_price {
     font-size: 10px;
-    color: gray;
+    color: #707070;
 }
 
 .price_detail {
@@ -205,7 +205,7 @@
 
 .apply_btn:disabled {
     cursor: not-allowed;
-    color: gray;
+    color: #707070;
 }
 
 .step_two_info_label {
@@ -214,14 +214,14 @@
 }
 
 .price_highlighter {
-    color: navy;
+    color: #4d60aa;
     font-weight: bold;
 }
 
 .step_3_header {
     text-align: center;
     font-size: 18px;
-    color: gray;
+    color: #707070;
 }
 
 .step_3_info_container {
@@ -237,14 +237,14 @@
 }
 
 .step_3_info_key {
-    color: gray;
+    color: #707070;
     font-weight: bold;
     font-size: 15px;
 }
 
 .step_3_info_val {
     font-size: 15px;
-    color: gray;
+    color: #707070;
 }
 
 .done_hero {
@@ -255,25 +255,25 @@
 
 .done_hero_header {
     font-size: 24px;
-    color: navy;
+    color: #4d60aa;
     font-weight: bold;
     margin: 20px 0;
 }
 
 .done_hero_message {
     font-size: 13px;
-    color: gray;
+    color: #707070;
     line-height: 18px;
 }
 
 .done_hero_message_highlight {
-    color: navy;
+    color: #4d60aa;
     font-weight: bold;
 }
 
 .done_section_header {
     font-size: 16px;
-    color: navy;
+    color: #4d60aa;
     font-weight: bold;
     width: 90%;
     margin: 10px auto;

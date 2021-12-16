@@ -1,42 +1,32 @@
-import React, { createContext } from "react";
+import React from "react";
+import Head from "next/head";
 import "../styles/globals.css";
-import { motion } from "framer-motion";
 import Navbar from "@components/navbar/Navbar";
 import { AuthProvider } from "@src/states/AuthContext";
 import { NavbarProvider } from "src/states/NavbarContext.js";
-import commons from "@styles/commons/Commons.module.css";
 
 function MyApp({ Component, pageProps, router }) {
     const pwaStyler = {
         minHeight: "100vh",
-        backgroundColor: "#fafafa",
+        backgroundColor: "#F2F2F2",
         width: "100%",
         maxWidth: "430px",
         margin: "0 auto",
     };
     return (
-        <div style={pwaStyler}>
-            <AuthProvider>
-                <NavbarProvider>
-                    <Navbar />
-                    {/* <motion.div
-                    key={router.route}
-                    initial="pageInitial"
-                    animate="pageAnimate"
-                    variants={{
-                        pageInitial: {
-                            translateX: "100%",
-                        },
-                        pageAnimate: {
-                            translateX: 0,
-                        },
-                    }}
-                > */}
-                    <Component {...pageProps} />
-                    {/* </motion.div> */}
-                </NavbarProvider>
-            </AuthProvider>
-        </div>
+        <>
+            <Head>
+                <link rel="shortcut icon" href="/renta_white.png" />
+            </Head>
+            <div style={pwaStyler}>
+                <AuthProvider>
+                    <NavbarProvider>
+                        <Navbar />
+                        <Component {...pageProps} />
+                    </NavbarProvider>
+                </AuthProvider>
+            </div>
+        </>
     );
 }
 

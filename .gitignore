@@ -33,6 +33,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+#PWA files
 **/public/sw.js 
 **/public/workbox-*.js 
 **/public/workbox-*.js.map 
@@ -43,3 +44,7 @@ yarn-error.log*
 .env.development
 /package-lock.json
 yarn.lock
+
+
+.serverless
+.serverless_nextjs

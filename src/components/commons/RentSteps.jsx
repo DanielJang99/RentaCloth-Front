@@ -13,8 +13,8 @@ import StepConnector, {
 
 const useStyles = makeStyles(() => ({
     root: {
-        "& .Mui-active": { color: "navy" },
-        "& .Mui-completed": { color: "navy" },
+        "& .Mui-active": { color: "#4D60AA" },
+        "& .Mui-completed": { color: "#4D60AA" },
         "& .Mui-disabled .MuiStepIcon-root": { color: "#d0dce6" },
     },
 }));
