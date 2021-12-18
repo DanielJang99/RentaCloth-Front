@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 
 function Hero() {
     const router = useRouter();
-    const handleClick = () => {
-        router.push(`/intro`);
+    const handleClick = (link) => {
+        router.push(`/${link}`);
     };
     return (
         <div className={styles.hero_container}>
@@ -14,11 +14,19 @@ function Hero() {
                 alt="santa icon"
                 className={styles.santa}
             />
-            <div
-                className={styles.service_desc_btn}
-                onClick={() => handleClick()}
-            >
-                {"서비스 소개 >"}
+            <div className={styles.btn_container}>
+                <div
+                    className={styles.service_desc_btn}
+                    onClick={() => handleClick("intro")}
+                >
+                    {"서비스 소개 >"}
+                </div>
+                <div
+                    className={styles.service_desc_btn}
+                    onClick={() => handleClick("howto")}
+                >
+                    {"이용 방법 >"}
+                </div>
             </div>
         </div>
     );

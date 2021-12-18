@@ -10,9 +10,8 @@ import StepDone from "@src/components/rent/steps/StepDone";
 
 function Rent() {
     const router = useRouter();
-    const { step } = router.query;
+    const { step, size, color } = router.query;
 
-    const [rentContext, rentContextActions] = useContext(RentContext);
     const [navState, navActions] = useContext(NavbarContext);
     useEffect(() => {
         navActions.setHeader("렌탈 신청하기");
@@ -31,15 +30,13 @@ function Rent() {
         fetchProduct();
     }, [router.isReady]);
 
-    useEffect(() => {
-        console.log(rentContext);
-    }, [rentContext]);
-
     return (
         <>
             {product && (
                 <RentProvider>
-                    {step === "1" && <StepOne product={product} />}
+                    {step === "1" && (
+                        <StepOne product={product} size={size} color={color} />
+                    )}
                     {step === "2" && <StepTwo product={product} />}
                     {step === "3" && <StepThree product={product} />}
                     {step === "done" && <StepDone product={product} />}

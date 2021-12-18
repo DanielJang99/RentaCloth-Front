@@ -166,50 +166,6 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                     </div>
                     <div className={styles.rent_info_container}>
                         <div className={commons.grey_bg}>
-                            <div className={styles.rent_date_details}>
-                                <div
-                                    className={
-                                        styles.rent_date_detail_container
-                                    }
-                                >
-                                    <div className={styles.rent_date_label}>
-                                        상품 출고일
-                                    </div>
-                                    <div className={styles.rent_date_detail}>
-                                        {format(
-                                            addDays(
-                                                calendarState.startDate,
-                                                -1,
-                                            ),
-                                            "yyyy.MM.dd",
-                                        )}
-                                    </div>
-                                </div>
-                                <div
-                                    className={
-                                        styles.rent_date_detail_container
-                                    }
-                                >
-                                    <div className={styles.rent_date_label}>
-                                        상품 수거일
-                                    </div>
-                                    <div className={styles.rent_date_detail}>
-                                        {calendarState.currentSelection ===
-                                            "startDate" &&
-                                            `${format(
-                                                addDays(
-                                                    calendarState.endDate,
-                                                    1,
-                                                ),
-                                                "yyyy.MM.dd",
-                                            )}`}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.rent_info_container}>
-                        <div className={commons.grey_bg}>
                             <div className={styles.price_detail_container}>
                                 <div className={styles.price_header_section}>
                                     <div className={styles.price_header}>

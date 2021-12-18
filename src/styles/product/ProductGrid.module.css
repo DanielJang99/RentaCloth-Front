@@ -1,0 +1,30 @@
+.musinsa_header {
+    color: white;
+    font-size: 16px;
+    word-break: keep-all;
+    font-weight: 400;
+    padding: 20px 0 20px;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.musinsa_logo_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.musinsa_logo {
+    width: 30%;
+}
+
+.musinsa_subheader {
+    color: white;
+    font-size: 16px;
+    word-break: keep-all;
+    font-weight: bold;
+    padding: 10px 0;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}

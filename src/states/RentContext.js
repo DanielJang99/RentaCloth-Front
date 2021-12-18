@@ -10,6 +10,8 @@ const RentContext = createContext({
 const RentProvider = ({ children }) => {
     const [rent, setRent] = useState({
         product_id: "",
+        color: "",
+        size: "",
         days: 0,
         price: "",
         receival_station: {},
@@ -20,6 +22,8 @@ const RentProvider = ({ children }) => {
     const resetRent = () => {
         setRent({
             product_id: "",
+            color: "",
+            size: "",
             days: 0,
             price: "",
             receival_station: {},

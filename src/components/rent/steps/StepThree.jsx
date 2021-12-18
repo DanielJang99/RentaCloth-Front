@@ -13,6 +13,8 @@ function StepThree({ product }) {
     const router = useRouter();
     const [rentContext, rentContextActions] = useContext(RentContext);
     const {
+        color,
+        size,
         start_date,
         end_date,
         price,
@@ -47,6 +49,8 @@ function StepThree({ product }) {
         const res = await api.post(`/rents`, {
             product_id: product._id,
             user_id: user_id,
+            color: color,
+            size: size,
             days: days,
             price: price,
             start_date: start_date,
@@ -68,6 +72,12 @@ function StepThree({ product }) {
                 "step=done",
             );
             return router.push(next_url);
+        } else {
+            if (res.status === 400) {
+                if (confirm(res.data.error)) {
+                    return router.push("/");
+                }
+            }
         }
     };
 
@@ -85,6 +95,26 @@ function StepThree({ product }) {
             </div>
             <div className={styles.step_3_header}>상세 내역</div>
             <Hero product={product} />
+            <div
+                className={classnames(
+                    styles.rent_info_header,
+                    styles.step_two_info_label,
+                )}
+            >
+                상품 정보
+            </div>
+            <div className={commons.white_bg}>
+                <div className={styles.step_3_info_container}>
+                    <div className={styles.step_3_info_row}>
+                        <div className={styles.step_3_info_key}>컬러</div>
+                        <div className={styles.step_3_info_val}>{color}</div>
+                    </div>
+                    <div className={styles.step_3_info_row}>
+                        <div className={styles.step_3_info_key}>사이즈</div>
+                        <div className={styles.step_3_info_val}>{size}</div>
+                    </div>
+                </div>
+            </div>
             <div
                 className={classnames(
                     styles.rent_info_header,
@@ -123,21 +153,25 @@ function StepThree({ product }) {
             >
                 반납처 정보
             </div>
-            <div className={styles.step_3_info_container}>
-                <div className={styles.step_3_info_row}>
-                    <div className={styles.step_3_info_key}>보내시는 분</div>
-                    <div className={styles.step_3_info_val}>{name}</div>
-                </div>
-                <div className={styles.step_3_info_row}>
-                    <div className={styles.step_3_info_key}>수령처</div>
-                    <div className={styles.step_3_info_val}>
-                        {return_station.name}
+            <div className={commons.white_bg}>
+                <div className={styles.step_3_info_container}>
+                    <div className={styles.step_3_info_row}>
+                        <div className={styles.step_3_info_key}>
+                            보내시는 분
+                        </div>
+                        <div className={styles.step_3_info_val}>{name}</div>
                     </div>
-                </div>
-                <div className={styles.step_3_info_row}>
-                    <div className={styles.step_3_info_key}>수령일</div>
-                    <div className={styles.step_3_info_val}>
-                        {format(end_date, "yyyy.MM.dd")}
+                    <div className={styles.step_3_info_row}>
+                        <div className={styles.step_3_info_key}>수령처</div>
+                        <div className={styles.step_3_info_val}>
+                            {return_station.name}
+                        </div>
+                    </div>
+                    <div className={styles.step_3_info_row}>
+                        <div className={styles.step_3_info_key}>수령일</div>
+                        <div className={styles.step_3_info_val}>
+                            {format(end_date, "yyyy.MM.dd")}
+                        </div>
                     </div>
                 </div>
             </div>

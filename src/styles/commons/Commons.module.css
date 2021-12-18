@@ -15,6 +15,11 @@
     width: 100%;
 }
 
+.navy_bg {
+    background-color: #273469;
+    width: 100%;
+}
+
 .section_container {
     width: 90%;
     margin: 0 auto;

@@ -18,6 +18,7 @@ function StepDone({ product }) {
         start_date: "",
         end_date: "",
         price: "",
+        name: "",
     });
 
     useEffect(() => {
@@ -31,7 +32,14 @@ function StepDone({ product }) {
             const res = await api.get(
                 `/rents/user/${user_id}/product/${product_id}`,
             );
-            return setRentItem(res.data);
+            const { _id, start_date, end_date, price } = res.data.rent;
+            return setRentItem({
+                _id: _id,
+                start_date: start_date,
+                end_date: end_date,
+                price: price,
+                name: res.data.name,
+            });
         };
         rentContextActions.resetRent();
         fetchRent();
@@ -45,34 +53,21 @@ function StepDone({ product }) {
         <div className={commons.slide_from_right}>
             <div className={styles.done_hero}>
                 <div className={styles.done_hero_header}>
-                    입금 확인 후 <br /> 주문이 완료됩니다.
+                    재고 확인 후 <br /> 결제 방법을 안내 드립니다.
                 </div>
                 <div className={styles.done_hero_message}>
-                    렌타클로스를 이용해주셔서 진심으로 감사드립니다. <br />
-                    현재 결제 모듈 점검 중으로 <br />
+                    현재는 베타 서비스 기간으로,
+                    <br />
+                    상품 재고 확인 후 <b>카카오톡 채널</b>을 통해 결제 안내가
+                    가능한 점 양해 부탁드립니다.
+                    <br />
+                    <br />
+                    원활한 안내를 위해
                     <span className={styles.done_hero_message_highlight}>
-                        무통장입금 결제
+                        {" "}
+                        꼭 카카오톡 채널을 추가
                     </span>
-                    만 가능한 점 양해부탁드립니다.
-                </div>
-            </div>
-            <div className={styles.done_section_header}>결제 정보</div>
-            <div className={commons.white_bg}>
-                <div className={styles.step_3_info_container}>
-                    <div className={styles.step_done_info_row}>
-                        <div className={styles.step_3_info_key}>입금자명</div>
-                        <div className={styles.step_3_info_val}>렌타클로스</div>
-                    </div>
-                    <div className={styles.step_done_info_row}>
-                        <div className={styles.step_3_info_key}>은행</div>
-                        <div className={styles.step_3_info_val}>국민은행</div>
-                    </div>
-                    <div className={styles.step_done_info_row}>
-                        <div className={styles.step_3_info_key}>계좌번호</div>
-                        <div className={styles.step_3_info_val}>
-                            023502-42-209391
-                        </div>
-                    </div>
+                    해 주세요!
                 </div>
             </div>
             <div className={styles.done_section_header}>주문 정보</div>
@@ -82,6 +77,12 @@ function StepDone({ product }) {
                         <div className={styles.step_3_info_key}>주문번호</div>
                         <div className={styles.step_3_info_val}>
                             {rentItem._id}
+                        </div>
+                    </div>
+                    <div className={styles.step_done_info_row}>
+                        <div className={styles.step_3_info_key}>상품명</div>
+                        <div className={styles.step_3_info_val}>
+                            {rentItem.name}
                         </div>
                     </div>
                     <div className={styles.step_done_info_row}>
@@ -99,9 +100,14 @@ function StepDone({ product }) {
                     </div>
                 </div>
             </div>
-            <div className={styles.next_step_btn} onClick={() => handleClick()}>
-                홈으로 가기
-            </div>
+            <a
+                className={styles.next_step_btn}
+                href="http://pf.kakao.com/_qdxgQK"
+                target="_blank"
+                onClick={() => handleClick()}
+            >
+                카카오톡 채널 추가하기
+            </a>
         </div>
     );
 }

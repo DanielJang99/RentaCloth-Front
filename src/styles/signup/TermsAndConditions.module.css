@@ -30,4 +30,8 @@
 
 .term_detail {
     color: black;
+    text-align: start;
+    width: 90%;
+    white-space: pre-wrap;
+    overflow-y: scroll;
 }

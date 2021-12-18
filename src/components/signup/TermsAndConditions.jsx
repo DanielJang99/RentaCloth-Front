@@ -3,27 +3,12 @@ import styles from "@styles/signup/TermsAndConditions.module.css";
 import TermDetail from "./TermDetail";
 
 function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
-    const details =
-        "약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다.약관입니다. 약관입니다. 약관입니다. 약관입니다. 약관입니다. ";
-
-    const {
-        personalInfoCollection,
-        rentaClothTermsAndConditions,
-        minAge,
-        marketing,
-    } = terms;
+    const { personalInfoCollection, rentaClothTermsAndConditions } = terms;
 
     useEffect(() => {
-        if (personalInfoCollection && rentaClothTermsAndConditions && minAge) {
+        if (personalInfoCollection && rentaClothTermsAndConditions) {
             setTermsValidate(true);
-            if (marketing) {
-                checkAll(true);
-            } else {
-                setTerms({
-                    ...terms,
-                    all: false,
-                });
-            }
+            checkAll(true);
         } else {
             setTermsValidate(false);
             setTerms({
@@ -31,20 +16,13 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
                 all: false,
             });
         }
-    }, [
-        personalInfoCollection,
-        rentaClothTermsAndConditions,
-        minAge,
-        marketing,
-    ]);
+    }, [personalInfoCollection, rentaClothTermsAndConditions]);
 
     const checkAll = (type) => {
         setTerms({
             all: type,
             personalInfoCollection: type,
             rentaClothTermsAndConditions: type,
-            minAge: type,
-            marketing: type,
         });
     };
 
@@ -73,23 +51,6 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
             <div className={styles.checks_container}>
                 <div className={styles.checkbox_wrapper}>
                     <input
-                        name="personalInfoCollection"
-                        type="checkbox"
-                        checked={terms.personalInfoCollection}
-                        onChange={() => checkTerm("personalInfoCollection")}
-                        className={styles.checkbox}
-                    />
-                    <label className={styles.checkbox_label}>
-                        개인정보 수집 이용동의(필수)
-                    </label>
-                </div>
-                <div className={styles.terms_modal_container}>
-                    <TermDetail detail={details} />
-                </div>
-            </div>
-            <div className={styles.checks_container}>
-                <div className={styles.checkbox_wrapper}>
-                    <input
                         name="rentaClothTermsAndConditions"
                         type="checkbox"
                         checked={terms.rentaClothTermsAndConditions}
@@ -99,45 +60,28 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
                         className={styles.checkbox}
                     />
                     <label className={styles.checkbox_label}>
-                        renta-cloth 이용약관(필수)
+                        이용약관 동의(필수)
                     </label>
                 </div>
                 <div className={styles.terms_modal_container}>
-                    <TermDetail detail={details} />
+                    <TermDetail term={"termsOfUse"} />
                 </div>
             </div>
             <div className={styles.checks_container}>
                 <div className={styles.checkbox_wrapper}>
                     <input
-                        name="minAge"
+                        name="personalInfoCollection"
                         type="checkbox"
-                        checked={terms.minAge}
-                        onChange={() => checkTerm("minAge")}
+                        checked={terms.personalInfoCollection}
+                        onChange={() => checkTerm("personalInfoCollection")}
                         className={styles.checkbox}
                     />
                     <label className={styles.checkbox_label}>
-                        만 14세 미만 가입 제한(필수)
+                        개인정보 수집 및 이용동의(필수)
                     </label>
                 </div>
                 <div className={styles.terms_modal_container}>
-                    <TermDetail detail={details} />
-                </div>
-            </div>
-            <div className={styles.checks_container}>
-                <div className={styles.checkbox_wrapper}>
-                    <input
-                        name="marketing"
-                        type="checkbox"
-                        checked={terms.marketing}
-                        onChange={() => checkTerm("marketing")}
-                        className={styles.checkbox}
-                    />
-                    <label className={styles.checkbox_label}>
-                        마케팅 활용 및 광고성 정부 수신 동의 (선택)
-                    </label>
-                </div>
-                <div className={styles.terms_modal_container}>
-                    <TermDetail detail={details} />
+                    <TermDetail term={"termsOfPersonalInfo"} />
                 </div>
             </div>
         </div>

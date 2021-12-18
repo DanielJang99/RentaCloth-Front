@@ -19,18 +19,26 @@ const StyledBox = styled(Box)(() => ({
 
 function RentalBtn(props) {
     const router = useRouter();
-    const { window, product_id, isAvailable } = props;
+    const { window, product_id, isAvailable, colors, sizes } = props;
 
     const [authState, authActions] = useContext(AuthContext);
 
-    useEffect(() => {
-        console.log(authState);
-    }, [authState]);
-
     const [open, setOpen] = useState(false);
+    const [input, setInput] = useState({
+        color: undefined,
+        size: undefined,
+    });
 
     const toggleCta = (newOpen) => () => {
         setOpen(newOpen);
+    };
+
+    const handleChange = (event, type) => {
+        const val = event.target.value;
+        setInput({
+            ...input,
+            [type]: val,
+        });
     };
 
     const container =
@@ -71,14 +79,25 @@ function RentalBtn(props) {
                                         <Select
                                             labelId="color_label"
                                             id="color_label"
-                                            // value={10}
                                             label="color_label"
-                                            // onChange={handleChange}
+                                            onChange={(e) =>
+                                                handleChange(e, "color")
+                                            }
                                             className={styles.rent_select}
                                         >
-                                            <MenuItem value={"default"}>
-                                                기본
-                                            </MenuItem>
+                                            {colors.length > 0 ? (
+                                                colors.map((color) => {
+                                                    return (
+                                                        <MenuItem value={color}>
+                                                            {color}
+                                                        </MenuItem>
+                                                    );
+                                                })
+                                            ) : (
+                                                <MenuItem value={"기본"}>
+                                                    기본
+                                                </MenuItem>
+                                            )}
                                         </Select>
                                     </FormControl>
                                 </div>
@@ -90,27 +109,46 @@ function RentalBtn(props) {
                                         <Select
                                             labelId="size_label"
                                             id="size_label"
-                                            // value={10}
                                             label="size_label"
-                                            // onChange={handleChange}
+                                            onChange={(e) =>
+                                                handleChange(e, "size")
+                                            }
                                             className={styles.rent_select}
                                         >
-                                            <MenuItem value={"default"}>
-                                                기본
-                                            </MenuItem>
+                                            {sizes.length > 0 ? (
+                                                sizes.map((size) => {
+                                                    return (
+                                                        <MenuItem value={size}>
+                                                            {size}
+                                                        </MenuItem>
+                                                    );
+                                                })
+                                            ) : (
+                                                <MenuItem value={"기본"}>
+                                                    기본
+                                                </MenuItem>
+                                            )}
                                         </Select>
                                     </FormControl>
                                 </div>
                             </StyledBox>
                             <div className={styles.modal_btn_container}>
-                                <div className={styles.modal_cart_btn}>
+                                {/* <div className={styles.modal_cart_btn}>
                                     장바구니
-                                </div>
+                                </div> */}
                                 <div
-                                    className={styles.rent_btn_wrapper}
+                                    className={
+                                        input.color && input.size
+                                            ? styles.rent_btn_wrapper
+                                            : classNames(
+                                                  styles.rent_btn_wrapper,
+                                                  styles.disabled,
+                                                  styles.unclickable,
+                                              )
+                                    }
                                     onClick={() =>
                                         router.push(
-                                            `/rent?step=1&product_id=${product_id}`,
+                                            `/rent?step=1&product_id=${product_id}&color=${input.color}&size=${input.size}`,
                                         )
                                     }
                                 >

@@ -30,3 +30,60 @@
     color: grey;
     margin-bottom: 10px;
 }
+
+.main_register {
+    padding: 20px 0;
+    background-color: #273469;
+}
+
+.main_register_title {
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main_register_subtitle {
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    margin: 10px 0 15px;
+}
+
+.musinsa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.musinsa_icon_wrapper {
+    width: 100px;
+}
+
+.musinsa_icon {
+    width: 100%;
+}
+
+.musinsa_desc {
+    color: white;
+    padding-left: 20px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    word-break: keep-all;
+}
+
+.register_btn_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.register_btn {
+    border: solid 1px white;
+    font-size: 14px;
+    color: white;
+    padding: 6px 18px;
+    margin-top: 5px;
+    cursor: pointer;
+}

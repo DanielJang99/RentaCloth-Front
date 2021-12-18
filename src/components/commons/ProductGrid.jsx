@@ -1,11 +1,19 @@
 import React from "react";
 import commons from "@styles/commons/Commons.module.css";
+import styles from "@styles/product/ProductGrid.module.css";
 import Link from "next/link";
+import { color } from "@mui/system";
+import classNames from "classnames";
 
 function ProductGrid({ products }) {
     if (products && products.length > 0) {
         return (
-            <div className={commons.products}>
+            <div
+                className={classNames(
+                    commons.products,
+                    commons.slide_from_right,
+                )}
+            >
                 {products.map((product, index) => {
                     return (
                         <Link
@@ -15,7 +23,7 @@ function ProductGrid({ products }) {
                         >
                             <div className={commons.product}>
                                 <img
-                                    src={product.image_urls[0]}
+                                    src={product.thumbnail}
                                     alt="제품 이미지"
                                     className={commons.product_img}
                                 />
@@ -43,6 +51,34 @@ function ProductGrid({ products }) {
                         </Link>
                     );
                 })}
+                <div className={commons.product}>
+                    <a href="http://pf.kakao.com/_qdxgQK" target="_blank">
+                        <div
+                            className={classNames(
+                                commons.product_img,
+                                commons.navy_bg,
+                            )}
+                            style={{ height: "95%" }}
+                        >
+                            <div className={styles.musinsa_header}>
+                                원하시는 상품이 없으신가요?
+                            </div>
+                            <div className={styles.musinsa_logo_wrapper}>
+                                <img
+                                    src="/musinsa_icon.png"
+                                    alt="musinsa logo"
+                                    className={styles.musinsa_logo}
+                                />
+                            </div>
+                            <div className={styles.musinsa_subheader}>
+                                무신사 인기 상품은 신청만 하면 즉시 대여 가능!
+                            </div>
+                        </div>
+                    </a>
+                    <div className={commons.product_name}>
+                        상품 입고 신청하기
+                    </div>
+                </div>
             </div>
         );
     }

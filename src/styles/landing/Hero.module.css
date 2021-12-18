@@ -20,7 +20,15 @@
     border: solid 1px white;
     font-size: 14px;
     color: white;
-    padding: 4px 18px;
+    padding: 5px 0;
     margin-top: 15px;
     cursor: pointer;
+    width: 100px;
+    text-align: center;
+}
+
+.btn_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10px;
 }

@@ -76,20 +76,12 @@ function Product({ product }) {
                             </div>
                         </div>
                     </div>
-
-                    {/*                 배송 정보                    */}
-                    <div className={commons.section_container}>
-                        <div className={styles.section_label}>배송정보</div>
-                    </div>
-                    <div
-                        className={styles.white_background}
-                        style={{ height: "50px" }}
-                    ></div>
-
                     {/*                렌탈 신청                    */}
                     <RentalBtn
                         product_id={product._id}
                         isAvailable={product.isAvailable}
+                        colors={product.colors}
+                        sizes={product.sizes}
                     />
                 </>
             )}

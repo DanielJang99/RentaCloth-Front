@@ -18,7 +18,7 @@ function ProductCarousel({ image_urls }) {
                             >
                                 <CardMedia
                                     component="img"
-                                    height="345"
+                                    height="550px"
                                     image={image}
                                     alt="product image"
                                 />

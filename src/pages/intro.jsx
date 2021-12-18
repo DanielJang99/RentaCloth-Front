@@ -18,11 +18,13 @@ function Intro() {
                 </div>
                 <div className={styles.desc} data-aos="fade-up">
                     렌타클로스는
-                    <span className={styles.green}> 남성 패션 렌탈 서비스</span>
+                    <span className={styles.green}>
+                        {" "}
+                        남성 브랜드 의류 대여 서비스
+                    </span>
                     예요.
-                    <b> 언제든 원하는 옷을 예약</b>하면{" "}
-                    <span className={styles.green}>택배 배송</span> 혹은 근처{" "}
-                    <span className={styles.green}>무인 보관함에서 즉시 </span>
+                    <b> 언제든 원하는 옷을 예약</b>하면 인근 지하철역{" "}
+                    <span className={styles.green}>물품 보관함에서 즉시 </span>
                     제품을 받아보실 수 있어요.
                 </div>
             </div>
@@ -38,10 +40,9 @@ function Intro() {
                 <div className={styles.desc} data-aos="fade-up">
                     렌타클로스에서 제공하는 제품들은 <b>20</b>대 남성들이{" "}
                     <span className={styles.green}>
-                        가장 선호하는 인기 편집숍의 베스트 브랜드 제품
+                        가장 선호하는 무신사의 월간 베스트 브랜드 제품
                     </span>
-                    들로 <span className={styles.green}>무신사</span> 등에서
-                    직접 사입하고 있어요.
+                    들로 직접 사입하고 있어요.
                 </div>
             </div>
             <div className={styles.intro_section}>
@@ -56,7 +57,7 @@ function Intro() {
                 </div>
                 <div className={styles.desc} data-aos="fade-up">
                     제품은 수령일로부터
-                    <span className={styles.green}> 최소 2일 ~ 최대 14일</span>
+                    <span className={styles.green}> 최소 3일 ~ 최대 10일</span>
                     까지 이용하실 수 있어요.{" "}
                     <span className={styles.green}>
                         대여 일수가 길어질수록 하루 평균 대여비가 저렴

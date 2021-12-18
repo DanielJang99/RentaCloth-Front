@@ -8,11 +8,23 @@ import RentContext from "src/states/RentContext";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 
-function StepOne({ product }) {
+function StepOne({ product, color, size }) {
     const router = useRouter();
 
     const [rentContext, rentContextActions] = useContext(RentContext);
     const { start_date, end_date } = rentContext.rent;
+
+    useEffect(() => {
+        rentContextActions.setRent({
+            ...rentContext.rent,
+            color: color,
+            size: size,
+        });
+    }, [color, size]);
+
+    useEffect(() => {
+        console.log(rentContext);
+    }, [rentContext]);
 
     const goNextStep = () => {
         return router.push(`/rent?step=2&product_id=${product._id}`);

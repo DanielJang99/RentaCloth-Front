@@ -15,6 +15,10 @@
     background-color: #707070;
 }
 
+.unclickable {
+    cursor: not-allowed;
+}
+
 .rent_drawer {
     width: 100%;
     max-width: 430px;
@@ -53,8 +57,8 @@
 }
 
 .modal_btn_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
     width: 100%;
     max-width: 430px;
     margin: 0 auto;
