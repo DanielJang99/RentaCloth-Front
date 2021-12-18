@@ -1,3 +1,4 @@
+import Metatags from "@src/components/metatags/Metatags";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -13,10 +14,7 @@ class MyDocument extends Document {
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/icon-192x192.png" />
                     <link rel="theme-color" href="#fff" />
-                    {/* <meta
-                        http-equiv="Content-Security-Policy"
-                        content="upgrade-insecure-requests"
-                    ></meta> */}
+                    <Metatags />
                 </Head>
                 <body>
                     <Main />
