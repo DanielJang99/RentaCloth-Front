@@ -32,8 +32,8 @@ export const handleRespRejected = (error) => {
     };
 };
 
-const apiUrl = process.env.NEXT_PUBLIC_API;
-// const apiUrl = "https://api.rentacloth.net";
+// const apiUrl = process.env.NEXT_PUBLIC_API;
+const apiUrl = "https://api.rentacloth.net";
 const api = axios.create({
     baseURL: apiUrl,
     timeout: 100000,
