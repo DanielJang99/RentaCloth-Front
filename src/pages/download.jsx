@@ -10,7 +10,7 @@ function Download() {
 
     const handleClick = () => {
         handleOpen();
-        navigator.clipboard.writeText("http://renta-cloth.com");
+        navigator.clipboard.writeText("http://rentacloth.net");
     };
     return (
         <div className={commons.section_container}>
@@ -35,8 +35,22 @@ function Download() {
                     <div className={styles.desc_step}>
                         2. 우측 상단 아이콘을 눌러주세요.
                     </div>
+                    <div className={styles._wrapper}>
+                        <img
+                            src="/android1.jpg"
+                            alt="ios_3"
+                            className={styles.image}
+                        />
+                    </div>
                     <div className={styles.desc_step}>
                         3. [다운로드]를 눌러주세요.
+                    </div>
+                    <div className={styles._wrapper}>
+                        <img
+                            src="/android2.jpg"
+                            alt="ios_3"
+                            className={styles.image}
+                        />
                     </div>
                 </div>
             </div>
@@ -62,7 +76,7 @@ function Download() {
                     </div>
                     <div className={styles._wrapper}>
                         <img
-                            src="/ios_2.jpg"
+                            src="/ios1.jpg"
                             alt="ios_2"
                             className={styles.image}
                         />
@@ -72,7 +86,7 @@ function Download() {
                     </div>
                     <div className={styles._wrapper}>
                         <img
-                            src="/ios_1.jpg"
+                            src="/ios2.jpg"
                             alt="ios_3"
                             className={styles.image}
                         />
