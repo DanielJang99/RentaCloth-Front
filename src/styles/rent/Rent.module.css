@@ -120,6 +120,16 @@
     overflow: scroll;
 }
 
+.rent_modal_container::-webkit-scrollbar {
+    display: inline;
+    width: 4px;
+}
+
+.rent_modal_container::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: lightgray;
+}
+
 .rent_info_container {
     margin-top: 10px;
 }
