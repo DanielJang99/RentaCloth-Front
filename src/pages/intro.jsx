@@ -57,7 +57,7 @@ function Intro() {
                 </div>
                 <div className={styles.desc} data-aos="fade-up">
                     제품은 수령일로부터
-                    <span className={styles.green}> 최소 3일 ~ 최대 10일</span>
+                    <span className={styles.green}> 최소 4일 ~ 최대 11일</span>
                     까지 이용하실 수 있어요.{" "}
                     <span className={styles.green}>
                         대여 일수가 길어질수록 하루 평균 대여비가 저렴
