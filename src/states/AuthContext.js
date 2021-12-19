@@ -15,8 +15,6 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            console.log(localStorage.getItem("token"));
-            console.log(localStorage.getItem("user_id"));
             localStorage.getItem("token") &&
                 localStorage.getItem("user_id") &&
                 setAuthState({ logined: true });

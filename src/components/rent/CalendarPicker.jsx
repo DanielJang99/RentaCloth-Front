@@ -45,7 +45,7 @@ function CalendarPicker({ product_id, handleCloseModal }) {
             const res = await axios.get(
                 `${api_url}/product_prices/product/${product_id}`,
             );
-            setPayPrice(res.data.prices.filter((p) => p.day === 3)[0].price);
+            setPayPrice(res.data.prices.filter((p) => p.day === 4)[0].price);
             return setPriceData(res.data);
         };
         fetchProductPrices();
@@ -59,10 +59,10 @@ function CalendarPicker({ product_id, handleCloseModal }) {
         ) {
             item.selection.endDate = addDays(startDate, 3);
         }
-        const daysOffest = differenceInDays(endDate, startDate);
+        const daysOffest = differenceInDays(endDate, startDate) + 1;
         let selectedDayPrice = priceData.prices.filter(
             (p) => p.day === daysOffest,
-        )[0];
+        );
         if (!selectedDayPrice && daysOffest != 0) {
             selectedDayPrice = priceData.prices.at(-1);
             item.selection.endDate = addDays(startDate, selectedDayPrice.day);
@@ -72,8 +72,8 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                 ? "endDate"
                 : "startDate";
         setCalendarState(item.selection);
-        selectedDayPrice
-            ? setPayPrice(selectedDayPrice.price)
+        selectedDayPrice.length > 0
+            ? setPayPrice(selectedDayPrice[0].price)
             : setPayPrice(null);
     };
 
@@ -91,7 +91,8 @@ function CalendarPicker({ product_id, handleCloseModal }) {
             if (isBefore(day, addDays(calendarState.startDate, 3))) {
                 return <div className={styles.rent_unavailable_day}>X</div>;
             }
-            const daysOffest = differenceInDays(day, calendarState.startDate);
+            const daysOffest =
+                differenceInDays(day, calendarState.startDate) + 1;
             const availablePrice = priceData.prices.filter(
                 (price) => price.day === daysOffest,
             )[0];
@@ -110,10 +111,11 @@ function CalendarPicker({ product_id, handleCloseModal }) {
             product_id: product_id,
             start_date: calendarState.startDate,
             end_date: calendarState.endDate,
-            days: differenceInDays(
-                calendarState.endDate,
-                calendarState.startDate,
-            ),
+            days:
+                differenceInDays(
+                    calendarState.endDate,
+                    calendarState.startDate,
+                ) + 1,
             price: payPrice,
         });
         return handleCloseModal();

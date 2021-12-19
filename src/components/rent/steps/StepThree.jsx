@@ -55,8 +55,8 @@ function StepThree({ product }) {
             price: price,
             start_date: start_date,
             end_date: end_date,
-            receival_station_id: receival_station.id,
-            return_station_id: return_station.id,
+            receival_station: receival_station,
+            return_station: return_station,
             status: "pending",
         });
         if (res.status === 201) {
@@ -134,7 +134,7 @@ function StepThree({ product }) {
                     <div className={styles.step_3_info_row}>
                         <div className={styles.step_3_info_key}>수령처</div>
                         <div className={styles.step_3_info_val}>
-                            {receival_station.name}
+                            {receival_station}
                         </div>
                     </div>
                     <div className={styles.step_3_info_row}>
@@ -164,7 +164,7 @@ function StepThree({ product }) {
                     <div className={styles.step_3_info_row}>
                         <div className={styles.step_3_info_key}>수령처</div>
                         <div className={styles.step_3_info_val}>
-                            {return_station.name}
+                            {return_station}
                         </div>
                     </div>
                     <div className={styles.step_3_info_row}>

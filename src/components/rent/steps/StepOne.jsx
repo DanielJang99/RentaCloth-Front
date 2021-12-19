@@ -22,10 +22,6 @@ function StepOne({ product, color, size }) {
         });
     }, [color, size]);
 
-    useEffect(() => {
-        console.log(rentContext);
-    }, [rentContext]);
-
     const goNextStep = () => {
         return router.push(`/rent?step=2&product_id=${product._id}`);
     };

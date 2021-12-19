@@ -15,20 +15,11 @@ function StepTwo({ product }) {
     const [rentContext, rentContextActions] = useContext(RentContext);
     const { start_date, end_date, price, days } = rentContext.rent;
 
-    const [stations, setStations] = useState([]);
     const [inputs, setInputs] = useState({
-        receival_station: { id: "", name: "" },
-        return_station: { id: "", name: "" },
+        receival_station: "",
+        return_station: "",
     });
     const { receival_station, return_station } = inputs;
-
-    useEffect(() => {
-        const fetchStations = async () => {
-            const res = await api.get("/stations");
-            return setStations(res.data.stations);
-        };
-        fetchStations();
-    }, []);
 
     useEffect(() => {
         if (
@@ -100,14 +91,10 @@ function StepTwo({ product }) {
                     </div>
                 </div>
             )}
-            <StationSelector
-                stations={stations}
-                inputs={inputs}
-                setInputs={setInputs}
-            />
+            <StationSelector inputs={inputs} setInputs={setInputs} />
             <button
                 className={styles.next_step_btn}
-                disabled={!(receival_station.name && return_station.name)}
+                disabled={!(receival_station && return_station)}
                 onClick={() => handleClick()}
             >
                 렌탈하기

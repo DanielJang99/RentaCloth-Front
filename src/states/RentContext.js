@@ -14,8 +14,8 @@ const RentProvider = ({ children }) => {
         size: "",
         days: 0,
         price: "",
-        receival_station: {},
-        return_station: {},
+        receival_station: "",
+        return_station: "",
         start_date: "",
         end_date: "",
     });
@@ -26,8 +26,8 @@ const RentProvider = ({ children }) => {
             size: "",
             days: 0,
             price: "",
-            receival_station: {},
-            return_station: {},
+            receival_station: "",
+            return_station: "",
             start_date: "",
             end_date: "",
         });

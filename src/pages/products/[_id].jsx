@@ -57,10 +57,10 @@ function Product({ product }) {
                         <div className={styles.price_section}>
                             <div>
                                 <div className={styles.daily_price}>
-                                    {`렌트: ${product.daily_price}원/일`}
+                                    {`4일: ${product.daily_price}원`}
                                 </div>
                                 <div className={styles.retail_price}>
-                                    <strike>{`소매: ${product.retail_price}원`}</strike>
+                                    <strike>{`정가: ${product.retail_price}원`}</strike>
                                 </div>
                             </div>
                             {/* <div>
