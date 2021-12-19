@@ -16,18 +16,12 @@ function Login() {
         navActions.setHeader("로그인");
     }, []);
 
-    useEffect(() => {
-        return authState.logined && router.push("/");
-    }, [authState]);
-
+    const [errorMessage, setErrorMessage] = useState("");
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
-
     const { email, password } = inputs;
-
-    const [errorMessage, setErrorMessage] = useState("");
 
     const onChange = (e) => {
         const { value, name } = e.target;
@@ -55,9 +49,8 @@ function Login() {
     };
 
     const goNext = () => {
-        return router.query.next
-            ? router.push(router.query.next)
-            : router.push("/");
+        const { next } = router.query;
+        return next ? router.push(next) : router.push("/");
     };
 
     const goToSignup = () => {
