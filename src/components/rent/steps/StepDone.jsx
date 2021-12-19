@@ -102,7 +102,7 @@ function StepDone({ product }) {
             </div>
             <a
                 className={styles.next_step_btn}
-                href="http://pf.kakao.com/_qdxgQK"
+                href="http://pf.kakao.com/_qdxgQK/chat"
                 target="_blank"
                 onClick={() => handleClick()}
             >

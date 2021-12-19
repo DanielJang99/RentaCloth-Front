@@ -63,7 +63,7 @@ function Product({ product }) {
                                     <strike>{`소매: ${product.retail_price}원`}</strike>
                                 </div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <div className={styles.discount_percentage}>
                                     {`${getDiscountPercentage(
                                         product.daily_price,
@@ -73,9 +73,10 @@ function Product({ product }) {
                                         Down
                                     </span>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
+
                     {/*                렌탈 신청                    */}
                     <RentalBtn
                         product_id={product._id}

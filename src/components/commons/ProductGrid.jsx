@@ -37,7 +37,7 @@ function ProductGrid({ products }) {
                                     <div
                                         className={commons.product_daily_price}
                                     >
-                                        <span>일 </span>
+                                        <span>4일 </span>
                                         {product.daily_price}원
                                     </div>
                                     <div
@@ -52,7 +52,7 @@ function ProductGrid({ products }) {
                     );
                 })}
                 <div className={commons.product}>
-                    <a href="http://pf.kakao.com/_qdxgQK" target="_blank">
+                    <a href="http://pf.kakao.com/_qdxgQK/chat" target="_blank">
                         <div
                             className={classNames(
                                 commons.product_img,

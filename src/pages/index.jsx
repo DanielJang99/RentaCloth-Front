@@ -58,7 +58,7 @@ export default function Home() {
                         <div className={styles.register_btn_wrapper}>
                             <a
                                 className={styles.register_btn}
-                                href="http://pf.kakao.com/_qdxgQK"
+                                href="http://pf.kakao.com/_qdxgQK/chat"
                                 target="_blank"
                             >
                                 {"입고 신청하기 >"}

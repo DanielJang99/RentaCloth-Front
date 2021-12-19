@@ -94,7 +94,6 @@ function StepTwo({ product }) {
             {price && days && (
                 <div className={commons.white_bg}>
                     <div className={styles.rent_period_container}>
-                        {`${days}일`}&nbsp;
                         <span
                             className={styles.price_highlighter}
                         >{`${price}원`}</span>
