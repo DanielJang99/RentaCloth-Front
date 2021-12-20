@@ -66,7 +66,8 @@ function Signup() {
     };
 
     const goNext = async () => {
-        return router.query.next
+        const { next } = router.query;
+        return next && next !== "undefined"
             ? router.push(router.query.next)
             : router.push("/");
     };

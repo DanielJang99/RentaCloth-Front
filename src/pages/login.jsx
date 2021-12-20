@@ -50,7 +50,9 @@ function Login() {
 
     const goNext = () => {
         const { next } = router.query;
-        return next ? router.push(next) : router.push("/");
+        return next && next !== "undefined"
+            ? router.push(next)
+            : router.push("/");
     };
 
     const goToSignup = () => {

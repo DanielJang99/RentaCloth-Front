@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "@styles/howto/HowTo.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 function HowTo() {
     return (
