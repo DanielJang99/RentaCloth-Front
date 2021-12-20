@@ -99,7 +99,16 @@ function Menu() {
                                     내 정보
                                 </span>
                             </div> */}
-                            {!authState.logined && (
+                            {authState.logined ? (
+                                <div className={styles.drawer_menu_wrapper}>
+                                    <span
+                                        className={styles.drawer_menu}
+                                        onClick={() => router.push(`/myinfo`)}
+                                    >
+                                        내 정보
+                                    </span>
+                                </div>
+                            ) : (
                                 <div className={styles.drawer_menu_wrapper}>
                                     <span
                                         className={styles.drawer_menu}
