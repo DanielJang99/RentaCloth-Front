@@ -26,6 +26,7 @@ function Categories() {
                 className={classnames(styles.category, styles.outer)}
                 onClick={() => handleClick("outer")}
             >
+                {/* <img src="/outer.jpg" alt="outer" /> */}
                 <div className={styles.category_title}>아우터</div>
             </div>
         </div>

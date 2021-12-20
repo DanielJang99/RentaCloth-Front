@@ -24,3 +24,10 @@ export function getIsoDate(date) {
         new_date.getMonth() + 1
     }.${new_date.getDate()}(${DAYS[new_date.getDay()]})`;
 }
+
+export function getFormattedDate(date) {
+    let new_date = new Date(date);
+    return `${new_date.getFullYear()}.${
+        new_date.getMonth() + 1
+    }.${new_date.getDate()}`;
+}
