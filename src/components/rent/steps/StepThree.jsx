@@ -61,8 +61,9 @@ function StepThree({ product }) {
         });
         if (res.status === 201) {
             await api.post(`/alimtalk`, {
-                template_code: "orderReg",
+                template_code: "rentOrder2",
                 user_id: user_id,
+                include_admin: true,
                 data: {
                     rent_id: res.data._id,
                 },
