@@ -31,7 +31,8 @@
 }
 
 .thumb {
-    min-width: 150px;
+    min-width: 50px;
+    min-height: 130px;
 }
 
 .thumbnail {
