@@ -10,6 +10,7 @@ import { format } from "date-fns";
 import api from "@src/_axios";
 import router from "next/router";
 import StationSelector from "../StationSelector";
+import { getFormattedPrice } from "@src/utils/price";
 
 function StepTwo({ product }) {
     const [rentContext, rentContextActions] = useContext(RentContext);
@@ -87,7 +88,7 @@ function StepTwo({ product }) {
                     <div className={styles.rent_period_container}>
                         <span
                             className={styles.price_highlighter}
-                        >{`${price}원`}</span>
+                        >{`${getFormattedPrice(price)}원`}</span>
                     </div>
                 </div>
             )}

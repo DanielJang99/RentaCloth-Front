@@ -16,6 +16,7 @@ import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import RentContext from "src/states/RentContext";
 import axios from "axios";
+import { getFormattedPrice } from "@src/utils/price";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
 const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
@@ -29,11 +30,6 @@ function CalendarPicker({ product_id, handleCloseModal }) {
     );
 
     const [calendarState, setCalendarState] = useState({
-        // startDate: new Date(
-        // getYear(new Date()),
-        // getMonth(new Date()),
-        // getDate(new Date()),
-        // ),
         startDate: addDays(today, 2),
         endDate: addDays(today, 5),
         currentSelection: "startDate",
@@ -104,7 +100,7 @@ function CalendarPicker({ product_id, handleCloseModal }) {
             )[0];
             return availablePrice ? (
                 <div className={styles.rent_calendar_price}>
-                    ₩{availablePrice.price}
+                    ₩{getFormattedPrice(availablePrice.price)}
                 </div>
             ) : undefined;
         }
@@ -180,11 +176,18 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                                         주문금액
                                     </div>
                                     <div className={styles.retail_price}>
-                                        정상가: {priceData.retail_price}원
+                                        정상가:{" "}
+                                        {priceData.retail_price &&
+                                            getFormattedPrice(
+                                                priceData.retail_price,
+                                            )}
+                                        원
                                     </div>
                                 </div>
                                 <div className={styles.price_detail}>
-                                    {payPrice ? `${payPrice}원` : "-"}
+                                    {payPrice
+                                        ? `${getFormattedPrice(payPrice)}원`
+                                        : "-"}
                                 </div>
                             </div>
                         </div>

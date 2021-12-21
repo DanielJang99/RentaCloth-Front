@@ -5,7 +5,8 @@ import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import api from "@src/_axios";
 import { useRouter } from "next/router";
-import { getIsoDate } from "@src/utils/daterparser";
+import { getIsoDate } from "@src/utils/date";
+import { getFormattedPrice } from "@src/utils/price";
 
 function StepDone({ product }) {
     const router = useRouter();
@@ -95,7 +96,7 @@ function StepDone({ product }) {
                     <div className={styles.step_done_info_row}>
                         <div className={styles.step_3_info_key}>결제금액</div>
                         <div className={styles.step_3_info_val}>
-                            {rentItem.price}원
+                            {getFormattedPrice(rentItem.price)}원
                         </div>
                     </div>
                 </div>

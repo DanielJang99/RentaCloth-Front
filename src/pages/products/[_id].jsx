@@ -10,6 +10,7 @@ import IconShare from "@components/commons/IconShare";
 import RentalBtn from "@components/product/RentalBtn";
 import classnames from "classnames";
 import { useRouter } from "next/router";
+import { getFormattedPrice } from "@src/utils/price";
 
 function Product({ product }) {
     const router = useRouter();
@@ -62,10 +63,14 @@ function Product({ product }) {
                         <div className={styles.price_section}>
                             <div>
                                 <div className={styles.daily_price}>
-                                    {`4일: ${product.daily_price}원`}
+                                    {`4일: ${getFormattedPrice(
+                                        product.daily_price,
+                                    )}원`}
                                 </div>
                                 <div className={styles.retail_price}>
-                                    <strike>{`정가: ${product.retail_price}원`}</strike>
+                                    <strike>{`정가: ${getFormattedPrice(
+                                        product.retail_price,
+                                    )}원`}</strike>
                                 </div>
                             </div>
                             {/* <div>

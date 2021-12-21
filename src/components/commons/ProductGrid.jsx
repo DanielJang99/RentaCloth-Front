@@ -2,8 +2,8 @@ import React from "react";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/product/ProductGrid.module.css";
 import Link from "next/link";
-import { color } from "@mui/system";
 import classNames from "classnames";
+import { getFormattedPrice } from "@src/utils/price";
 
 function ProductGrid({ products }) {
     if (products && products.length > 0) {
@@ -38,13 +38,17 @@ function ProductGrid({ products }) {
                                         className={commons.product_daily_price}
                                     >
                                         <span>4일 </span>
-                                        {product.daily_price}원
+                                        {getFormattedPrice(product.daily_price)}
+                                        원
                                     </div>
                                     <div
                                         className={commons.product_retail_price}
                                     >
                                         <span>정가 </span>
-                                        {product.retail_price}원
+                                        {getFormattedPrice(
+                                            product.retail_price,
+                                        )}
+                                        원
                                     </div>
                                 </div>
                             </div>

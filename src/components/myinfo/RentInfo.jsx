@@ -1,7 +1,8 @@
 import React from "react";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/myinfo/MyInfo.module.css";
-import { getFormattedDate } from "@src/utils/daterparser";
+import { getFormattedDate } from "@src/utils/date";
+import { getFormattedPrice } from "@src/utils/price";
 import { useRouter } from "next/router";
 
 function RentInfo({ rent }) {
@@ -38,7 +39,9 @@ function RentInfo({ rent }) {
                         <div className={styles.clothing_detail}>
                             {rent.color}, {rent.size}
                         </div>
-                        <div className={styles.price}>{rent.price}원</div>
+                        <div className={styles.price}>
+                            {getFormattedPrice(rent.price)}원
+                        </div>
                         <div className={styles.rent_date}>
                             {getFormattedDate(rent.start_date)}(
                             {rent.receival_station}) -{" "}
