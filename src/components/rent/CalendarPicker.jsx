@@ -22,14 +22,20 @@ const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
 function CalendarPicker({ product_id, handleCloseModal }) {
     const [rentContext, rentContextActions] = useContext(RentContext);
+    const today = new Date(
+        getYear(new Date()),
+        getMonth(new Date()),
+        getDate(new Date()),
+    );
 
     const [calendarState, setCalendarState] = useState({
-        startDate: new Date(
-            getYear(new Date()),
-            getMonth(new Date()),
-            getDate(new Date()),
-        ),
-        endDate: addDays(new Date(), 3),
+        // startDate: new Date(
+        // getYear(new Date()),
+        // getMonth(new Date()),
+        // getDate(new Date()),
+        // ),
+        startDate: addDays(today, 2),
+        endDate: addDays(today, 5),
         currentSelection: "startDate",
         key: "selection",
     });
@@ -131,7 +137,7 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                             onChange={(item) => handleChange(item)}
                             moveRangeOnFirstSelection={false}
                             ranges={[calendarState]}
-                            minDate={new Date()}
+                            minDate={addDays(today, 2)}
                             dayContentRenderer={DayCustom}
                             showDateDisplay={false}
                         />
