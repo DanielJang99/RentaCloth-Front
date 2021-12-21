@@ -74,9 +74,9 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
     return {
         paths: [
-            // { params: { category: "top" } },
-            // { params: { category: "pants" } },
-            // { params: { category: "outer" } },
+            { params: { category: "top" } },
+            { params: { category: "pants" } },
+            { params: { category: "outer" } },
         ],
         fallback: true,
     };

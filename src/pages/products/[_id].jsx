@@ -5,11 +5,15 @@ import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/product/Product.module.css";
 import ProductCarousel from "@components/product/ProductCarousel";
 import ProductAvailability from "@components/product/ProductAvailability";
+import CircularProgress from "@mui/material/CircularProgress";
 import IconShare from "@components/commons/IconShare";
 import RentalBtn from "@components/product/RentalBtn";
 import classnames from "classnames";
+import { useRouter } from "next/router";
 
 function Product({ product }) {
+    const router = useRouter();
+
     const [state, actions] = useContext(NavbarContext);
     useEffect(() => {
         actions.setHeader("상품 정보");
@@ -26,6 +30,7 @@ function Product({ product }) {
                 commons.slide_from_right,
             )}
         >
+            {router.isFallback && <CircularProgress />}
             {product && (
                 <>
                     <ProductCarousel image_urls={product.image_urls} />
