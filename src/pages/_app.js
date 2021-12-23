@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import "../styles/globals.css";
 import Navbar from "@components/navbar/Navbar";
 import { AuthProvider } from "@src/states/AuthContext";
 import { NavbarProvider } from "src/states/NavbarContext.js";
+import * as gtag from "@src/lib/gtag";
+import { useRouter } from "next/router";
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
+    const router = useRouter();
+    useEffect(() => {
+        const handleRouteChange = (url) => {
+            gtag.pageview(url);
+        };
+        router.events.on("routeChangeComplete", handleRouteChange);
+        return () => {
+            router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, [router.events]);
+
     const pwaStyler = {
         minHeight: "100vh",
         backgroundColor: "#F2F2F2",
@@ -13,6 +26,7 @@ function MyApp({ Component, pageProps, router }) {
         maxWidth: "430px",
         margin: "0 auto",
     };
+
     return (
         <>
             <Head>
