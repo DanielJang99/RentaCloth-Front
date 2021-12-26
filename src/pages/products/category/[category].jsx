@@ -9,10 +9,10 @@ import classnames from "classnames";
 
 function ProductsByCategory({ category, products }) {
     const categories = Object.entries({
-        popular: "인기",
+        // popular: "인기",
+        outer: "아우터",
         top: "상의",
         pants: "하의",
-        outer: "아우터",
     });
 
     const [state, actions] = useContext(NavbarContext);

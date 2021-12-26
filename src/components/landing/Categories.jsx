@@ -11,6 +11,12 @@ function Categories() {
     return (
         <div className={styles.category_container}>
             <div
+                className={classnames(styles.category, styles.outer)}
+                onClick={() => handleClick("outer")}
+            >
+                <div className={styles.category_title}>아우터</div>
+            </div>
+            <div
                 className={classnames(styles.category, styles.top)}
                 onClick={() => handleClick("top")}
             >
@@ -21,12 +27,6 @@ function Categories() {
                 onClick={() => handleClick("pants")}
             >
                 <div className={styles.category_title}>하의</div>
-            </div>
-            <div
-                className={classnames(styles.category, styles.outer)}
-                onClick={() => handleClick("outer")}
-            >
-                <div className={styles.category_title}>아우터</div>
             </div>
         </div>
     );

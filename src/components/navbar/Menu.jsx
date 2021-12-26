@@ -57,7 +57,7 @@ function Menu() {
                                 <span
                                     className={styles.drawer_menu}
                                     onClick={() =>
-                                        router.push(`/products/category/top`)
+                                        router.push(`/products/category/outer`)
                                     }
                                 >
                                     카테고리
