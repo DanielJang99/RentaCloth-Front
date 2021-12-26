@@ -54,12 +54,13 @@ function CalendarPicker({ product_id, handleCloseModal }) {
     }, []);
 
     const handleChange = (item) => {
-        const { startDate, endDate } = item.selection;
+        let { startDate, endDate } = item.selection;
         if (
             calendarState.currentSelection === "endDate" &&
             isBefore(endDate, addDays(startDate, 3))
         ) {
             item.selection.endDate = addDays(startDate, 3);
+            endDate = addDays(startDate, 3);
         }
         const daysOffest = differenceInDays(endDate, startDate) + 1;
         let selectedDayPrice = priceData.prices.filter(
