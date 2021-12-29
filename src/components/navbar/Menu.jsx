@@ -1,19 +1,37 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "@src/states/AuthContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "@styles/navbar/Navbar.module.css";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
+import api from "@src/_axios";
 
 function Menu() {
     const router = useRouter();
+
+    const [isAdmin, setIsAdmin] = useState(false);
     const [open, setOpen] = useState(false);
     const [authState, authActions] = useContext(AuthContext);
 
     const toggleDrawer = () => () => {
         setOpen(!open);
     };
+
+    useEffect(() => {
+        const fetchIsUserAdmin = async (uid) => {
+            const res = await api.get(`/users/admin/${uid}`);
+            if (res.data) {
+                setIsAdmin(true);
+            }
+        };
+        if (!authState.logined) {
+            return;
+        }
+        const user_id = localStorage.getItem("user_id");
+        fetchIsUserAdmin(user_id);
+    }, [authState]);
+
     return (
         <div className={styles.menu_container}>
             <MenuIcon
@@ -89,16 +107,6 @@ function Menu() {
                                     다운로드
                                 </span>
                             </div>
-                            {/* <div className={styles.drawer_menu_wrapper}>
-                                <span
-                                    className={styles.drawer_menu}
-                                    onClick={() =>
-                                        router.push(`/mypage`)
-                                    }
-                                >
-                                    내 정보
-                                </span>
-                            </div> */}
                             {authState.logined ? (
                                 <div className={styles.drawer_menu_wrapper}>
                                     <span
@@ -115,6 +123,16 @@ function Menu() {
                                         onClick={() => router.push(`/login`)}
                                     >
                                         로그인
+                                    </span>
+                                </div>
+                            )}
+                            {isAdmin && (
+                                <div className={styles.drawer_menu_wrapper}>
+                                    <span
+                                        className={styles.drawer_menu}
+                                        onClick={() => router.push(`/admin`)}
+                                    >
+                                        Admin Only
                                     </span>
                                 </div>
                             )}

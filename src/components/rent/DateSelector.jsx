@@ -15,7 +15,6 @@ function DateSelector({ product_id }) {
 
     const handleClick = () => {
         handleOpen();
-        // navigator.clipboard.writeText("이걸 복사하세요");
     };
 
     const { start_date, end_date } = rentContext.rent;
