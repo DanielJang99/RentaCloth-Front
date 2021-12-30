@@ -5,10 +5,20 @@ import styles from "@styles/Home.module.css";
 import Search from "@components/landing/Search";
 import classnames from "classnames";
 import commons from "@styles/commons/Commons.module.css";
+import Modal from "@components/commons/Modal";
 
 export default function Home() {
     return (
         <div className={styles.container}>
+            <Modal
+                isOpen={true}
+                content={
+                    <div>
+                        아쉽게도 서비스 운영을 중단하게 되었습니다. <br />
+                        그동안 사용해 주셔서 감사합니다.
+                    </div>
+                }
+            />
             <Head>
                 <title>렌타클로스</title>
             </Head>
@@ -27,12 +37,6 @@ export default function Home() {
                         <div className={styles.main_item_title}>검색</div>
                         <Search />
                     </div>
-                    {/* <div className={styles.main_item}>
-                        <div className={styles.main_item_title}>
-                            먼지 쌓일 옷으로 수익내자!
-                        </div>
-                        <SharingBtn />
-                    </div> */}
                 </div>
                 <div className={styles.main_register}>
                     <div className={styles.main_items}>
