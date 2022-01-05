@@ -14,7 +14,17 @@ const Backdrop = styled("div")`
     -webkit-tap-highlight-color: transparent;
 `;
 
-function Modal({ content, isOpen, handleClose }) {
+interface ModalProps {
+    content: React.ReactElement | string;
+    isOpen: boolean;
+    handleClose: () => void;
+}
+
+function Modal({
+    content,
+    isOpen,
+    handleClose,
+}: ModalProps): React.ReactElement {
     return (
         <ModalUnstyled
             className={styles.modal_container}

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "@styles/landing/Search.module.css";
 
-function Search({ searchQuery }) {
+interface SearchProps {
+    searchQuery?: string;
+}
+
+function Search({ searchQuery }: SearchProps) {
     const router = useRouter();
     const [query, setQuery] = useState("");
 
@@ -12,11 +16,11 @@ function Search({ searchQuery }) {
         }
     }, []);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setQuery(e.target.value);
     };
 
-    const goToSearch = () => {
+    const goToSearch = (): void => {
         router.push(`/products/search?query=${query}`);
     };
     return (
@@ -26,7 +30,7 @@ function Search({ searchQuery }) {
                 placeholder={query ? query : "찾으시는 상품이 있나요?"}
                 className={styles.search_input}
                 onChange={handleChange}
-                onKeyPress={(e) => {
+                onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
                     e.key === "Enter" && goToSearch();
                 }}
             />

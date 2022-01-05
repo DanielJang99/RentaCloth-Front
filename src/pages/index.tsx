@@ -3,8 +3,6 @@ import Categories from "src/components/landing/Categories";
 import Hero from "@components/landing/hero";
 import styles from "@styles/Home.module.css";
 import Search from "@components/landing/Search";
-import classnames from "classnames";
-import commons from "@styles/commons/Commons.module.css";
 import Modal from "@components/commons/Modal";
 
 export default function Home() {
@@ -18,6 +16,7 @@ export default function Home() {
                         그동안 사용해 주셔서 감사합니다.
                     </div>
                 }
+                handleClose={() => {}}
             />
             <Head>
                 <title>렌타클로스</title>
