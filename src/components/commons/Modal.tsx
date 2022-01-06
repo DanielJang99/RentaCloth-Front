@@ -2,6 +2,7 @@ import React from "react";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { styled, Box } from "@mui/system";
 import styles from "@styles/commons/Modal.module.css";
+import ModalProps from "@src/types/modal";
 
 const Backdrop = styled("div")`
     z-index: -1;
@@ -13,12 +14,6 @@ const Backdrop = styled("div")`
     background-color: rgba(0, 0, 0, 0.5);
     -webkit-tap-highlight-color: transparent;
 `;
-
-interface ModalProps {
-    content: React.ReactElement | string;
-    isOpen: boolean;
-    handleClose: () => void;
-}
 
 function Modal({
     content,
