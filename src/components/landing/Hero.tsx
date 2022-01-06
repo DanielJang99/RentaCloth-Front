@@ -2,9 +2,9 @@ import React from "react";
 import styles from "@styles/landing/Hero.module.css";
 import { useRouter } from "next/router";
 
-function Hero() {
+function Hero(): React.ReactElement {
     const router = useRouter();
-    const handleClick = (link) => {
+    const handleClick = (link: string): void => {
         router.push(`/${link}`);
     };
     return (

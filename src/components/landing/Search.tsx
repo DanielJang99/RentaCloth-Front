@@ -11,9 +11,7 @@ function Search({ searchQuery }: SearchProps) {
     const [query, setQuery] = useState("");
 
     useEffect(() => {
-        if (searchQuery) {
-            setQuery(searchQuery);
-        }
+        searchQuery && setQuery(searchQuery);
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

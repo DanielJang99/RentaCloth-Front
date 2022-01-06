@@ -3,9 +3,9 @@ import styles from "@styles/landing/Categories.module.css";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 
-function Categories() {
+function Categories(): React.ReactElement {
     const router = useRouter();
-    const handleClick = (type) => {
+    const handleClick = (type: "outer" | "top" | "pants"): void => {
         router.push(`/products/category/${type}`);
     };
     return (
