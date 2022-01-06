@@ -4,8 +4,13 @@ import styles from "@styles/product/ProductGrid.module.css";
 import Link from "next/link";
 import classNames from "classnames";
 import { getFormattedPrice } from "@src/utils/price";
+import Product from "@src/types/product";
 
-function ProductGrid({ products }) {
+interface ProductGridProps {
+    products: Product[];
+}
+
+function ProductGrid({ products }: ProductGridProps): React.ReactElement {
     if (products && products.length > 0) {
         return (
             <div

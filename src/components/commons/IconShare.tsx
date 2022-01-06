@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import Modal from "@components/commons/Modal";
+import { useRouter } from "next/router";
 
 function IconShare() {
-    const [open, setOpen] = React.useState(false);
+    const { asPath } = useRouter();
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         handleOpen();
-        navigator.clipboard.writeText("이걸 복사하세요");
+        navigator.clipboard.writeText(`https://rentacloth.net${asPath}`);
     };
 
     return (

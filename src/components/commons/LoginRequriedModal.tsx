@@ -2,7 +2,11 @@ import React from "react";
 import styles from "@styles/commons/Modal.module.css";
 import { useRouter } from "next/router";
 
-function LoginRequriedModal({ closeModal }) {
+interface LoginRequiredModalProps {
+    closeModal: () => void;
+}
+
+function LoginRequriedModal({ closeModal }: LoginRequiredModalProps) {
     const router = useRouter();
     const handleClick = () => {
         router.push(`/login?next=${window.location.pathname}`);

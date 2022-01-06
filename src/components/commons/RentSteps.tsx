@@ -18,12 +18,8 @@ const useStyles = makeStyles(() => ({
         "& .Mui-disabled .MuiStepIcon-root": { color: "#d0dce6" },
     },
 }));
-const steps = ["1", "2", "3"];
 
 const StyledConnector = styled(StepConnector)(({ theme }) => ({
-    // [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    // top: 22,
-    // },
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundColor: "#d0dce6",
@@ -38,11 +34,12 @@ const StyledConnector = styled(StepConnector)(({ theme }) => ({
         height: 2,
         border: 0,
         backgroundColor: "#d0dce6",
-        // borderRadius: 1,
     },
 }));
 
-function RentStepper({ step }) {
+const steps = ["1", "2", "3"];
+
+function RentStepper({ step }: { step: 0 | 1 | 2 }): React.ReactElement {
     const c = useStyles();
     return (
         <Box sx={{ width: "100%" }}>
@@ -58,7 +55,6 @@ function RentStepper({ step }) {
                             <div className={styles.step_label}>
                                 {step === index && `STEP${step + 1}`}
                             </div>
-                            {/* {step === index && `STEP${step + 1}`} */}
                         </StepLabel>
                     </Step>
                 ))}

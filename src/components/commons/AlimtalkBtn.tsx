@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "@components/commons/Modal";
 
-function AlimtalkBtn() {
+function AlimtalkBtn(): React.ReactElement {
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
@@ -10,7 +10,7 @@ function AlimtalkBtn() {
     };
     return (
         <div>
-            <div onClick={() => handleClick()}>hi</div>
+            <div onClick={() => handleClick()}>알림톡 발송</div>
             <Modal
                 isOpen={openModal}
                 handleClose={handleClose}
