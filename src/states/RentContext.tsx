@@ -1,13 +1,28 @@
-import React, { createContext, useState } from "react";
+import React, {
+    createContext,
+    useState,
+    Dispatch,
+    SetStateAction,
+} from "react";
+import Rent from "@src/types/rent";
 
-const RentContext = createContext({
-    state: {},
-    actions: {
-        setRent: () => {},
+type RentType = [
+    { rent: Rent | {} },
+    {
+        setRent?: Dispatch<SetStateAction<Rent>>;
+        resetRent?: () => void;
     },
-});
+];
 
-const RentProvider = ({ children }) => {
+const RentContext = createContext<RentType>([
+    { rent: {} },
+    {
+        setRent: () => {},
+        resetRent: () => {},
+    },
+]);
+
+const RentProvider = ({ children }: { children: React.ReactNode }) => {
     const [rent, setRent] = useState({
         product_id: "",
         color: "",

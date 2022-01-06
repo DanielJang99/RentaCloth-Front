@@ -1,14 +1,27 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, {
+    createContext,
+    useEffect,
+    useState,
+    Dispatch,
+    SetStateAction,
+} from "react";
 import api from "@src/_axios/index";
 
-const AuthContext = createContext({
-    state: {},
-    actions: {
-        setAuth: () => {},
+type AuthType = [
+    { logined: boolean },
+    {
+        setAuthState?:
+            | Dispatch<SetStateAction<{ logined: boolean }>>
+            | (() => void);
     },
-});
+];
 
-const AuthProvider = ({ children }) => {
+const AuthContext = createContext<AuthType>([
+    { logined: false },
+    { setAuthState: () => {} },
+]);
+
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [authState, setAuthState] = useState({
         logined: false,
     });
