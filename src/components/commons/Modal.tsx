@@ -2,7 +2,7 @@ import React from "react";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { styled, Box } from "@mui/system";
 import styles from "@styles/commons/Modal.module.css";
-import ModalProps from "@src/types/modal";
+import ModalProps from "@src/types/modal.type";
 
 const Backdrop = styled("div")`
     z-index: -1;

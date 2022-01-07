@@ -6,7 +6,7 @@ import Link from "next/link";
 import ProductGrid from "@components/commons/ProductGrid";
 import { useNavbar } from "@src/states/NavbarContext";
 import classnames from "classnames";
-import Product from "@src/types/product";
+import Product from "@src/types/product.type";
 
 interface ProductsByCategoryProps {
     category: string;

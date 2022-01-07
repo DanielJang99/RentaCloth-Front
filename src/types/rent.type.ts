@@ -8,4 +8,6 @@ export default interface Rent {
     return_station: string;
     start_date: string;
     end_date: string;
+    createdAt?: string;
+    updatedAt?: string;
 }

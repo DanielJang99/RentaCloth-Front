@@ -4,7 +4,7 @@ import styles from "@styles/product/ProductGrid.module.css";
 import Link from "next/link";
 import classNames from "classnames";
 import { getFormattedPrice } from "@src/utils/price";
-import Product from "@src/types/product";
+import Product from "@src/types/product.type";
 
 interface ProductGridProps {
     products: Product[];

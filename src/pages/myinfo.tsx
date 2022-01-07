@@ -3,18 +3,17 @@ import RentInfo from "@src/components/myinfo/RentInfo";
 import { useNavbar } from "@src/states/NavbarContext";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/myinfo/MyInfo.module.css";
-import { useRouter } from "next/router";
 import api from "@src/_axios";
 import classnames from "classnames";
+import RentDetail from "@src/types/rent_detail.type";
 
 function MyInfo() {
-    const router = useRouter();
     const { setHeader } = useNavbar();
     useEffect(() => {
         setHeader("내 정보");
     }, []);
 
-    const [userRents, setUserRents] = useState([]);
+    const [userRents, setUserRents] = useState<RentDetail[] | []>([]);
     const [name, setName] = useState("");
 
     useEffect(() => {

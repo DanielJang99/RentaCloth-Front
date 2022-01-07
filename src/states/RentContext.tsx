@@ -5,7 +5,7 @@ import React, {
     SetStateAction,
     useContext,
 } from "react";
-import Rent from "@src/types/rent";
+import Rent from "@src/types/rent.type";
 
 type RentType = [
     { rent: Rent | {} },

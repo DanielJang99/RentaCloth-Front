@@ -4,8 +4,9 @@ import styles from "@styles/myinfo/MyInfo.module.css";
 import { getFormattedDate } from "@src/utils/date";
 import { getFormattedPrice } from "@src/utils/price";
 import { useRouter } from "next/router";
+import RentDetail from "@src/types/rent_detail.type";
 
-function RentInfo({ rent }) {
+function RentInfo({ rent }: { rent: RentDetail }) {
     const router = useRouter();
     const handleClick = () => {
         return router.push(`/products/${rent.product_id}`);

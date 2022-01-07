@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@styles/myinfo/MyInfo.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import { useRouter } from "next/router";
 import RentInfo from "@src/components/myinfo/RentInfo";
 import api from "@src/_axios";
-import AlimtalkBtn from "@src/components/commons/AlimtalkBtn";
+import RentDetail from "@src/types/rent_detail.type";
 
 function RentDetailAdmin() {
     const router = useRouter();
-    const [userRents, setUserRents] = useState([]);
+    const [userRents, setUserRents] = useState<[] | RentDetail[]>([]);
 
     useEffect(() => {
         const user_id = router.query.user_id;
