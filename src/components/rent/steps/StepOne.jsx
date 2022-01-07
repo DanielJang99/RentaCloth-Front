@@ -4,19 +4,19 @@ import commons from "@styles/commons/Commons.module.css";
 import Hero from "@components/rent/Hero";
 import RentStepper from "@components/commons/RentSteps";
 import DateSelector from "@components/rent/DateSelector";
-import RentContext from "src/states/RentContext";
+import { useRent } from "src/states/RentContext";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 
 function StepOne({ product, color, size }) {
     const router = useRouter();
 
-    const [rentContext, rentContextActions] = useContext(RentContext);
-    const { start_date, end_date } = rentContext.rent;
+    const { rent, setRent } = useRent();
+    const { start_date, end_date } = rent;
 
     useEffect(() => {
-        rentContextActions.setRent({
-            ...rentContext.rent,
+        setRent({
+            ...rent,
             color: color,
             size: size,
         });

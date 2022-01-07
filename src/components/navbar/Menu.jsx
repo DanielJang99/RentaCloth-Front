@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import AuthContext from "@src/states/AuthContext";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "@src/states/AuthContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "@styles/navbar/Navbar.module.css";
 import Drawer from "@mui/material/Drawer";
@@ -12,7 +12,7 @@ function Menu() {
 
     const [isAdmin, setIsAdmin] = useState(false);
     const [open, setOpen] = useState(false);
-    const [authState, authActions] = useContext(AuthContext);
+    const { logined } = useAuth();
 
     const toggleDrawer = () => () => {
         setOpen(!open);
@@ -25,12 +25,12 @@ function Menu() {
                 setIsAdmin(true);
             }
         };
-        if (!authState.logined) {
+        if (!logined) {
             return;
         }
         const user_id = localStorage.getItem("user_id");
         fetchIsUserAdmin(user_id);
-    }, [authState]);
+    }, [logined]);
 
     return (
         <div className={styles.menu_container}>
@@ -107,7 +107,7 @@ function Menu() {
                                     다운로드
                                 </span>
                             </div>
-                            {authState.logined ? (
+                            {logined ? (
                                 <div className={styles.drawer_menu_wrapper}>
                                     <span
                                         className={styles.drawer_menu}

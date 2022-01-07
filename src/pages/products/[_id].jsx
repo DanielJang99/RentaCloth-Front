@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import NavbarContext from "src/states/NavbarContext";
+import { useNavbar } from "src/states/NavbarContext";
 import axios from "axios";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/product/Product.module.css";
@@ -14,10 +14,9 @@ import { getFormattedPrice } from "@src/utils/price";
 
 function Product({ product }) {
     const router = useRouter();
-
-    const [state, actions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar;
     useEffect(() => {
-        actions.setHeader("상품 정보");
+        setHeader("상품 정보");
     }, []);
 
     const getDiscountPercentage = (daily_price, retail_price) => {

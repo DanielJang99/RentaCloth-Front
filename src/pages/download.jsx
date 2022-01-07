@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/intro/Intro.module.css";
 import Modal from "@components/commons/Modal";
+import { useNavbar } from "@src/states/NavbarContext";
 
 function Download() {
-    const [open, setOpen] = React.useState(false);
+    const { setHeader } = useNavbar();
+    useEffect(() => {
+        setHeader("다운로드");
+    }, []);
+
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 

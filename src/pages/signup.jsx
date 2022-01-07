@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import api from "@src/_axios/index";
 import { useRouter } from "next/router";
-import AuthContext from "@src/states/AuthContext";
-import NavbarContext from "@src/states/NavbarContext";
+import { useAuth } from "@src/states/AuthContext";
+import { useNavbar } from "@src/states/NavbarContext";
 import UserInfoForm from "@src/components/signup/UserInfoForm";
 import TermsAndConditions from "@src/components/signup/TermsAndConditions";
 import Modal from "@components/commons/Modal";
@@ -14,11 +14,12 @@ import classNames from "classnames";
 function Signup() {
     const router = useRouter();
 
-    const [authState, authActions] = useContext(AuthContext);
-    const [navState, navActions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        navActions.setHeader("회원 가입");
+        setHeader("회원 가입");
     }, []);
+
+    const { setAuthState } = useAuth();
 
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
@@ -55,7 +56,7 @@ function Signup() {
         if (res.status == 201) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user_id", res.data.user._id);
-            authActions.setAuthState({
+            setAuthState({
                 logined: true,
             });
             setModalMessage(<CompletionMessage goNext={goNext} />);

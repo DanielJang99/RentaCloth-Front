@@ -3,7 +3,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import Navbar from "@components/navbar/Navbar";
 import { AuthProvider } from "@src/states/AuthContext";
-import { NavbarProvider } from "src/states/NavbarContext.js";
+import { NavbarProvider } from "src/states/NavbarContext.tsx";
 import * as gtag from "@src/lib/gtag";
 import { useRouter } from "next/router";
 

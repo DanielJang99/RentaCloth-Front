@@ -14,7 +14,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import RentContext from "src/states/RentContext";
+import { useRent } from "src/states/RentContext";
 import axios from "axios";
 import { getFormattedPrice } from "@src/utils/price";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
@@ -22,7 +22,7 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
 function CalendarPicker({ product_id, handleCloseModal }) {
-    const [rentContext, rentContextActions] = useContext(RentContext);
+    const { rent, setRent } = useRent();
     const today = new Date(
         getYear(new Date()),
         getMonth(new Date()),
@@ -109,8 +109,8 @@ function CalendarPicker({ product_id, handleCloseModal }) {
     }
 
     const handleClick = () => {
-        rentContextActions.setRent({
-            ...rentContext.rent,
+        setRent({
+            ...rent,
             product_id: product_id,
             start_date: calendarState.startDate,
             end_date: calendarState.endDate,

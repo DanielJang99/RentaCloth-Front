@@ -7,7 +7,7 @@ import axios from "axios";
 import ProductGrid from "@components/commons/ProductGrid";
 import WarningIcon from "@mui/icons-material/Warning";
 import SearchIcon from "@mui/icons-material/Search";
-import NavbarContext from "src/states/NavbarContext";
+import { useNavbar } from "@src/states/NavbarContext";
 import classnames from "classnames";
 
 function ProductsBySearch() {
@@ -15,9 +15,9 @@ function ProductsBySearch() {
     const { query } = router.query;
     const [products, setProducts] = useState([]);
 
-    const [state, actions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        actions.setHeader("상품 검색");
+        setHeader("상품 검색");
     }, []);
 
     useEffect(() => {

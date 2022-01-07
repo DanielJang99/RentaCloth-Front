@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import RentInfo from "@src/components/myinfo/RentInfo";
-import AuthContext from "@src/states/AuthContext";
-import NavbarContext from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/NavbarContext";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/myinfo/MyInfo.module.css";
 import { useRouter } from "next/router";
@@ -10,15 +9,13 @@ import classnames from "classnames";
 
 function MyInfo() {
     const router = useRouter();
-    const [authState, authActions] = useContext(AuthContext);
-    const [navState, navActions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar();
+    useEffect(() => {
+        setHeader("내 정보");
+    }, []);
 
     const [userRents, setUserRents] = useState([]);
     const [name, setName] = useState("");
-
-    useEffect(() => {
-        navActions.setHeader("내 정보");
-    }, []);
 
     useEffect(() => {
         const user_id = localStorage.getItem("user_id");

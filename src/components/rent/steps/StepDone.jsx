@@ -1,18 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
-import RentContext from "src/states/RentContext";
-import NavbarContext from "@src/states/NavbarContext";
+import { useRent } from "src/states/RentContext";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import api from "@src/_axios";
 import { useRouter } from "next/router";
 import { getIsoDate } from "@src/utils/date";
 import { getFormattedPrice } from "@src/utils/price";
+import { useNavbar } from "@src/states/NavbarContext";
 
 function StepDone({ product }) {
     const router = useRouter();
-
-    const [navState, navActions] = useContext(NavbarContext);
-    const [rentContext, rentContextActions] = useContext(RentContext);
+    const { resetRent } = useRent();
 
     const [rentItem, setRentItem] = useState({
         _id: "",
@@ -22,8 +20,9 @@ function StepDone({ product }) {
         name: "",
     });
 
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        navActions.setHeader("신청 완료");
+        setHeader("신청 완료");
     }, []);
 
     useEffect(() => {
@@ -42,7 +41,7 @@ function StepDone({ product }) {
                 name: res.data.name,
             });
         };
-        rentContextActions.resetRent();
+        resetRent();
         fetchRent();
     }, []);
 

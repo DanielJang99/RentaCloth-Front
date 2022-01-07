@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useContext, useState, useEffect } from "react";
-import RentContext from "src/states/RentContext";
+import { useRent } from "src/states/RentContext";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import classnames from "classnames";
@@ -11,7 +11,8 @@ import { format } from "date-fns";
 
 function StepThree({ product }) {
     const router = useRouter();
-    const [rentContext, rentContextActions] = useContext(RentContext);
+    const { rent } = useRent;
+
     const {
         color,
         size,
@@ -21,7 +22,7 @@ function StepThree({ product }) {
         days,
         return_station,
         receival_station,
-    } = rentContext.rent;
+    } = rent;
 
     const [name, setName] = useState("");
 
@@ -33,7 +34,7 @@ function StepThree({ product }) {
             const step1_url = window.location.href.replace("step=3", "step=1");
             return router.push(step1_url);
         }
-    }, [rentContext]);
+    }, [rent]);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -60,14 +61,14 @@ function StepThree({ product }) {
             status: "pending",
         });
         if (res.status === 201) {
-            await api.post(`/alimtalk`, {
-                template_code: "rentOrder2",
-                user_id: user_id,
-                include_admin: true,
-                data: {
-                    rent_id: res.data._id,
-                },
-            });
+            // await api.post(`/alimtalk`, {
+            //     template_code: "rentOrder2",
+            //     user_id: user_id,
+            //     include_admin: true,
+            //     data: {
+            //         rent_id: res.data._id,
+            //     },
+            // });
             const next_url = window.location.href.replace(
                 "step=3",
                 "step=done",

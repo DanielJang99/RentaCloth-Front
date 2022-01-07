@@ -3,19 +3,20 @@ import React, {
     useState,
     Dispatch,
     SetStateAction,
+    useContext,
 } from "react";
 
 type NavbarType = [
     { header: string },
-    { setHeader?: Dispatch<SetStateAction<string>> },
+    { setHeader: Dispatch<SetStateAction<string>> | (() => void) },
 ];
 
 const NavbarContext = createContext<NavbarType>([
     { header: "" },
-    { setHeader: undefined },
+    { setHeader: () => {} },
 ]);
 
-const NavbarProvider = ({ children }: { children: React.ReactNode }) => {
+export const NavbarProvider = ({ children }: { children: React.ReactNode }) => {
     const [header, setHeader] = useState("RentaCloth");
     const value = {
         state: { header },
@@ -29,5 +30,15 @@ const NavbarProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export { NavbarProvider };
+export const useNavbar = () => {
+    const [navState, navActions] = useContext(NavbarContext);
+    if (!navState || !navActions) throw new Error("Cannot find NavbarContext");
+    const { header } = navState;
+    const { setHeader } = navActions;
+    return {
+        header,
+        setHeader,
+    };
+};
+
 export default NavbarContext;

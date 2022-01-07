@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@styles/howto/HowTo.module.css";
 import commons from "@styles/commons/Commons.module.css";
+import { useNavbar } from "@src/states/NavbarContext";
 
 function HowTo() {
+    const { setHeader } = useNavbar();
+    useEffect(() => {
+        setHeader("이용 방법");
+    }, []);
+
     return (
         <div className={commons.section_container}>
             <div className={styles.page_container}>

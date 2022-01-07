@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import NavbarContext from "@src/states/NavbarContext";
-import AuthContext from "@src/states/AuthContext";
+import React, { useState, useEffect } from "react";
+import { useNavbar } from "@src/states/NavbarContext";
+import { useAuth } from "@src/states/AuthContext";
 import api from "@src/_axios/index";
 import { useRouter } from "next/router";
 import commons from "@styles/commons/Commons.module.css";
@@ -9,11 +9,11 @@ import classNames from "classnames";
 
 function Login() {
     const router = useRouter();
-    const [authState, authActions] = useContext(AuthContext);
-    const [navState, navActions] = useContext(NavbarContext);
+    const { setAuthState } = useAuth();
 
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        navActions.setHeader("로그인");
+        setHeader("로그인");
     }, []);
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -39,7 +39,7 @@ function Login() {
         if (res.status == 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user_id", res.data.user._id);
-            authActions.setAuthState({
+            setAuthState({
                 logined: true,
             });
             return goNext();

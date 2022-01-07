@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Categories from "src/components/landing/Categories";
-import Hero from "@components/landing/hero";
+import Hero from "@components/landing/Hero";
 import styles from "@styles/Home.module.css";
 import Search from "@components/landing/Search";
 import Modal from "@components/commons/Modal";
@@ -8,7 +8,7 @@ import Modal from "@components/commons/Modal";
 export default function Home() {
     return (
         <div className={styles.container}>
-            <Modal
+            {/* <Modal
                 isOpen={true}
                 content={
                     <div>
@@ -17,7 +17,7 @@ export default function Home() {
                     </div>
                 }
                 handleClose={() => {}}
-            />
+            /> */}
             <Head>
                 <title>렌타클로스</title>
             </Head>

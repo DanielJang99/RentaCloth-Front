@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import NavbarContext from "src/states/NavbarContext";
-import RentContext, { RentProvider } from "@src/states/RentContext";
+import { useNavbar } from "@src/states/NavbarContext";
+import { RentProvider } from "@src/states/RentContext";
 import StepOne from "@components/rent/steps/StepOne";
 import StepTwo from "@components/rent/steps/StepTwo";
 import StepThree from "@src/components/rent/steps/StepThree";
@@ -12,9 +12,9 @@ function Rent() {
     const router = useRouter();
     const { step, size, color } = router.query;
 
-    const [navState, navActions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        navActions.setHeader("렌탈 신청하기");
+        setHeader("렌탈 신청하기");
     }, []);
 
     const [product, setProduct] = useState(null);

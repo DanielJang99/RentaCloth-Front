@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import RentContext from "src/states/RentContext";
+import { useRent } from "src/states/RentContext";
 import classnames from "classnames";
 import RentStepper from "@components/commons/RentSteps";
 import Hero from "@components/rent/Hero";
@@ -13,8 +13,8 @@ import StationSelector from "../StationSelector";
 import { getFormattedPrice } from "@src/utils/price";
 
 function StepTwo({ product }) {
-    const [rentContext, rentContextActions] = useContext(RentContext);
-    const { start_date, end_date, price, days } = rentContext.rent;
+    const { rent, setRent } = useRent();
+    const { start_date, end_date, price, days } = rent;
 
     const [inputs, setInputs] = useState({
         receival_station: "",
@@ -30,11 +30,11 @@ function StepTwo({ product }) {
             const step1_url = window.location.href.replace("step=2", "step=1");
             return router.push(step1_url);
         }
-    }, [rentContext]);
+    }, [rent]);
 
     const handleClick = () => {
-        rentContextActions.setRent({
-            ...rentContext.rent,
+        setRent({
+            ...rent,
             receival_station: receival_station,
             return_station: return_station,
         });

@@ -3,6 +3,7 @@ import React, {
     useState,
     Dispatch,
     SetStateAction,
+    useContext,
 } from "react";
 import Rent from "@src/types/rent";
 
@@ -22,7 +23,7 @@ const RentContext = createContext<RentType>([
     },
 ]);
 
-const RentProvider = ({ children }: { children: React.ReactNode }) => {
+export const RentProvider = ({ children }: { children: React.ReactNode }) => {
     const [rent, setRent] = useState({
         product_id: "",
         color: "",
@@ -58,5 +59,15 @@ const RentProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export { RentProvider };
+export const useRent = () => {
+    const [rent, rentActions] = useContext(RentContext);
+    if (!rent || !rentActions) throw new Error("Cannot find rentContext");
+    const { setRent, resetRent } = rentActions;
+    return {
+        rent,
+        setRent,
+        resetRent,
+    };
+};
+
 export default RentContext;

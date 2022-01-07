@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "@styles/product/Rental.module.css";
 import { styled } from "@mui/material/styles";
@@ -8,7 +8,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import AuthContext from "@src/states/AuthContext";
+import { useAuth } from "@src/states/AuthContext";
 import classNames from "classnames";
 import Modal from "@components/commons/Modal";
 import LoginRequriedModal from "../commons/LoginRequriedModal";
@@ -21,7 +21,7 @@ function RentalBtn(props) {
     const router = useRouter();
     const { window, product_id, isAvailable, colors, sizes } = props;
 
-    const [authState, authActions] = useContext(AuthContext);
+    const { logined } = useAuth();
 
     const [open, setOpen] = useState(false);
     const [input, setInput] = useState({
@@ -47,7 +47,7 @@ function RentalBtn(props) {
     return (
         <>
             {typeof window !== "undefined" &&
-                (authState.logined && isAvailable ? (
+                (logined && isAvailable ? (
                     <>
                         <div
                             className={styles.rent_btn_wrapper}
@@ -170,7 +170,7 @@ function RentalBtn(props) {
                         </div>
                         <Modal
                             content={
-                                !authState.logined ? (
+                                !logined ? (
                                     <LoginRequriedModal
                                         closeModal={toggleCta(false)}
                                     />

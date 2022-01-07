@@ -1,24 +1,30 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useCallback } from "react";
 import axios from "axios";
 import styles from "@styles/category/Category.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import Link from "next/link";
 import ProductGrid from "@components/commons/ProductGrid";
-import NavbarContext from "src/states/NavbarContext";
+import { useNavbar } from "@src/states/NavbarContext";
 import classnames from "classnames";
+import Product from "@src/types/product";
 
-function ProductsByCategory({ category, products }) {
+interface ProductsByCategoryProps {
+    category: string;
+    products: Product[];
+}
+
+function ProductsByCategory({ category, products }: ProductsByCategoryProps) {
     const categories = Object.entries({
-        // popular: "인기",
         outer: "아우터",
         top: "상의",
         pants: "하의",
     });
 
-    const [state, actions] = useContext(NavbarContext);
+    const { setHeader } = useNavbar();
     useEffect(() => {
-        actions.setHeader("카테고리");
+        setHeader("카테고리");
     }, []);
+
     return (
         <div
             className={classnames(
@@ -57,16 +63,22 @@ function ProductsByCategory({ category, products }) {
 
 export default ProductsByCategory;
 
-export async function getStaticProps({ params }) {
+interface Params {
+    params: {
+        category: string;
+    };
+}
+
+export async function getStaticProps({ params }: Params) {
     const category = params.category;
     const apiUrl = process.env.NEXT_PUBLIC_API;
     const res = await axios.get(`${apiUrl}/products?category=${category}`);
-    const data = res.data;
+    const data: Product[] | undefined = res.data.obj_product;
 
     return {
         props: {
             category: category,
-            products: data.obj_product,
+            products: data,
         },
     };
 }

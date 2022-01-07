@@ -4,6 +4,7 @@ import React, {
     useState,
     Dispatch,
     SetStateAction,
+    useContext,
 } from "react";
 import api from "@src/_axios/index";
 
@@ -21,7 +22,7 @@ const AuthContext = createContext<AuthType>([
     { setAuthState: () => {} },
 ]);
 
-const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [authState, setAuthState] = useState({
         logined: false,
     });
@@ -46,5 +47,12 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export { AuthProvider };
+export const useAuth = () => {
+    const [authState, authActions] = useContext(AuthContext);
+    if (!authState || !authActions) throw new Error("Cannot find AuthContext");
+    const { logined } = authState;
+    const { setAuthState } = authActions;
+    return { logined, setAuthState };
+};
+
 export default AuthContext;
