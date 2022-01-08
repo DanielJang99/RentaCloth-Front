@@ -8,10 +8,12 @@ import RentStepper from "@components/commons/RentSteps";
 import Hero from "@components/rent/Hero";
 import api from "@src/_axios";
 import { format } from "date-fns";
+import Product from "@src/types/product.type";
+import { getFormattedDate } from "@src/utils/date";
 
-function StepThree({ product }) {
+function StepThree({ product }: { product: Product }): React.ReactElement {
     const router = useRouter();
-    const { rent } = useRent;
+    const { rent } = useRent();
 
     const {
         color,
@@ -32,7 +34,7 @@ function StepThree({ product }) {
             typeof window !== "undefined"
         ) {
             const step1_url = window.location.href.replace("step=3", "step=1");
-            return router.push(step1_url);
+            router.push(step1_url);
         }
     }, [rent]);
 
@@ -61,14 +63,14 @@ function StepThree({ product }) {
             status: "pending",
         });
         if (res.status === 201) {
-            // await api.post(`/alimtalk`, {
-            //     template_code: "rentOrder2",
-            //     user_id: user_id,
-            //     include_admin: true,
-            //     data: {
-            //         rent_id: res.data._id,
-            //     },
-            // });
+            await api.post(`/alimtalk`, {
+                template_code: "rentOrder2",
+                user_id: user_id,
+                include_admin: true,
+                data: {
+                    rent_id: res.data._id,
+                },
+            });
             const next_url = window.location.href.replace(
                 "step=3",
                 "step=done",
@@ -142,7 +144,7 @@ function StepThree({ product }) {
                     <div className={styles.step_3_info_row}>
                         <div className={styles.step_3_info_key}>수령일</div>
                         <div className={styles.step_3_info_val}>
-                            {format(start_date, "yyyy.MM.dd")}
+                            {getFormattedDate(start_date)}
                         </div>
                     </div>
                 </div>
@@ -172,7 +174,7 @@ function StepThree({ product }) {
                     <div className={styles.step_3_info_row}>
                         <div className={styles.step_3_info_key}>수령일</div>
                         <div className={styles.step_3_info_val}>
-                            {format(end_date, "yyyy.MM.dd")}
+                            {getFormattedDate(end_date)}
                         </div>
                     </div>
                 </div>

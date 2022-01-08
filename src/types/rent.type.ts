@@ -6,8 +6,8 @@ export default interface Rent {
     price: string;
     receival_station: string;
     return_station: string;
-    start_date: string;
-    end_date: string;
+    start_date?: string;
+    end_date?: string;
     createdAt?: string;
     updatedAt?: string;
 }

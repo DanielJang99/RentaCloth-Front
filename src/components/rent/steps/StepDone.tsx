@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import { getIsoDate } from "@src/utils/date";
 import { getFormattedPrice } from "@src/utils/price";
 import { useNavbar } from "@src/states/NavbarContext";
+import Product from "@src/types/product.type";
 
-function StepDone({ product }) {
+function StepDone({ product }: { product: Product }): React.ReactElement {
     const router = useRouter();
     const { resetRent } = useRent();
 

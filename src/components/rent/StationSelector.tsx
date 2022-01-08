@@ -2,9 +2,18 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import classnames from "classnames";
 import styles from "@styles/rent/Rent.module.css";
+import Stations from "@src/types/station.type";
 
-function StationSelector({ inputs, setInputs }) {
-    const handleChange = (e) => {
+interface StationSelectorProps {
+    inputs: Stations;
+    setInputs: React.Dispatch<React.SetStateAction<Stations>>;
+}
+
+function StationSelector({
+    inputs,
+    setInputs,
+}: StationSelectorProps): React.ReactElement {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setInputs({
             ...inputs,

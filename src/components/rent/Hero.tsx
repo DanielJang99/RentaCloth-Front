@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
+import Product from "@src/types/product.type";
 
-function Hero({ product }) {
+function Hero({ product }: { product: Product }): React.ReactElement {
     return (
         <>
             <div className={commons.section_container}>

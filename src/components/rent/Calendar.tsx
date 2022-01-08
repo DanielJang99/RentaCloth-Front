@@ -1,15 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { DateRange } from "react-date-range";
-import {
-    addDays,
-    format,
-    isBefore,
-    isAfter,
-    differenceInDays,
-    getDate,
-    getMonth,
-    getYear,
-} from "date-fns";
+import React, { useState, useEffect, useMemo } from "react";
+import { DateRange, RangeKeyDict, Range } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import styles from "@styles/rent/Rent.module.css";
@@ -18,28 +8,42 @@ import { useRent } from "src/states/RentContext";
 import axios from "axios";
 import { getFormattedPrice } from "@src/utils/price";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import {
+    isBefore,
+    isAfter,
+    getDifferenceInDays,
+    getFormattedDate,
+    addDays,
+    getWeekDay,
+} from "@src/utils/date";
+import {
+    calendarProps,
+    calendarRange,
+    productPriceData,
+} from "@src/types/calendar.type";
 
-const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
-
-function CalendarPicker({ product_id, handleCloseModal }) {
+function Calendar({
+    product_id,
+    handleCloseModal,
+}: calendarProps): React.ReactElement {
     const { rent, setRent } = useRent();
-    const today = new Date(
-        getYear(new Date()),
-        getMonth(new Date()),
-        getDate(new Date()),
-    );
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    const [calendarState, setCalendarState] = useState({
-        startDate: addDays(today, 2),
-        endDate: addDays(today, 5),
+    const [calendarState, setCalendarState] = useState<calendarRange>({
+        start: addDays(today, 2),
+        end: addDays(today, 5),
         currentSelection: "startDate",
-        key: "selection",
     });
-    const [priceData, setPriceData] = useState({
+
+    const { start, end, currentSelection } = calendarState;
+
+    const [priceData, setPriceData] = useState<productPriceData>({
         prices: [],
-        retail_price: null,
+        retail_price: 0,
     });
-    const [payPrice, setPayPrice] = useState(0);
+
+    const [payPrice, setPayPrice] = useState<string | number>("");
 
     useEffect(() => {
         const fetchProductPrices = async () => {
@@ -47,57 +51,70 @@ function CalendarPicker({ product_id, handleCloseModal }) {
             const res = await axios.get(
                 `${api_url}/product_prices/product/${product_id}`,
             );
-            setPayPrice(res.data.prices.filter((p) => p.day === 4)[0].price);
+            const data: productPriceData = res.data;
+            setPayPrice(data.prices.filter((p) => p.day === 4)[0].price);
             return setPriceData(res.data);
         };
         fetchProductPrices();
     }, []);
 
-    const handleChange = (item) => {
-        let { startDate, endDate } = item.selection;
+    const handleChange = (range: RangeKeyDict) => {
+        let { startDate, endDate } = range.selection;
+
+        // 선택한 반납일이 수령일에서 최소 3일 뒤가 아닌 경우
         if (
-            calendarState.currentSelection === "endDate" &&
+            currentSelection === "endDate" &&
             isBefore(endDate, addDays(startDate, 3))
         ) {
-            item.selection.endDate = addDays(startDate, 3);
+            range.selection.endDate = addDays(startDate, 3);
             endDate = addDays(startDate, 3);
         }
-        const daysOffest = differenceInDays(endDate, startDate) + 1;
-        let selectedDayPrice = priceData.prices.filter(
-            (p) => p.day === daysOffest,
-        );
-        if (!selectedDayPrice && daysOffest != 0) {
-            selectedDayPrice = priceData.prices.at(-1);
-            item.selection.endDate = addDays(startDate, selectedDayPrice.day);
+
+        const daysOffset = getDifferenceInDays(endDate, startDate) + 1;
+        let selectedDay = priceData.prices.filter((p) => p.day === daysOffset);
+
+        // 선택한 날짜에 반납을 할 수 없는 경우
+        if (
+            currentSelection === "endDate" &&
+            !selectedDay.length &&
+            daysOffset > 0
+        ) {
+            selectedDay = [priceData.prices[priceData.prices.length - 1]];
+            endDate = addDays(startDate, selectedDay[0]["day"] - 1);
         }
-        item.selection["currentSelection"] =
-            calendarState.currentSelection === "startDate"
-                ? "endDate"
-                : "startDate";
-        setCalendarState(item.selection);
-        selectedDayPrice.length > 0
-            ? setPayPrice(selectedDayPrice[0].price)
-            : setPayPrice(null);
+
+        // 달력 업데이트
+        setCalendarState({
+            ...calendarState,
+            start: startDate,
+            end: endDate,
+            currentSelection:
+                currentSelection === "startDate" ? "endDate" : "startDate",
+        });
+
+        // 가격 업데이트
+        selectedDay.length > 0
+            ? setPayPrice(selectedDay[0].price)
+            : setPayPrice("");
     };
 
-    function DayCustom(day) {
+    function DayCustom(day: Date) {
         const extraDot = getDayInfo(day);
         return (
             <div>
                 {extraDot}
-                <span>{format(day, "d")}</span>
+                <span>{day.getDate()}</span>
             </div>
         );
     }
-    function getDayInfo(day) {
-        if (isAfter(day, calendarState.startDate)) {
-            if (isBefore(day, addDays(calendarState.startDate, 3))) {
+    function getDayInfo(day: Date) {
+        if (isAfter(day, start)) {
+            if (isBefore(day, addDays(start, 3))) {
                 return <div className={styles.rent_unavailable_day}>X</div>;
             }
-            const daysOffest =
-                differenceInDays(day, calendarState.startDate) + 1;
+            const daysOffset = getDifferenceInDays(day, start) + 1;
             const availablePrice = priceData.prices.filter(
-                (price) => price.day === daysOffest,
+                (price) => price.day === daysOffset,
             )[0];
             return availablePrice ? (
                 <div className={styles.rent_calendar_price}>
@@ -112,14 +129,10 @@ function CalendarPicker({ product_id, handleCloseModal }) {
         setRent({
             ...rent,
             product_id: product_id,
-            start_date: calendarState.startDate,
-            end_date: calendarState.endDate,
-            days:
-                differenceInDays(
-                    calendarState.endDate,
-                    calendarState.startDate,
-                ) + 1,
-            price: payPrice,
+            start_date: start?.toString(),
+            end_date: end?.toString(),
+            days: getDifferenceInDays(end, start) + 1,
+            price: payPrice.toString(),
         });
         return handleCloseModal();
     };
@@ -131,9 +144,17 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                     <div className={commons.white_bg}>
                         <DateRange
                             editableDateInputs={true}
-                            onChange={(item) => handleChange(item)}
+                            onChange={(ranges: RangeKeyDict) =>
+                                handleChange(ranges)
+                            }
                             moveRangeOnFirstSelection={false}
-                            ranges={[calendarState]}
+                            ranges={[
+                                {
+                                    startDate: start,
+                                    endDate: end,
+                                    key: "selection",
+                                },
+                            ]}
                             minDate={addDays(today, 2)}
                             dayContentRenderer={DayCustom}
                             showDateDisplay={false}
@@ -147,24 +168,12 @@ function CalendarPicker({ product_id, handleCloseModal }) {
                                     <EventAvailableIcon fontSize="small" />
                                 </div>
                                 <div className={styles.rent_period}>
-                                    {format(
-                                        calendarState.startDate,
-                                        "yyyy.MM.dd",
-                                    )}
-                                    (
-                                    {weekdays[calendarState.startDate.getDay()]}
+                                    {getFormattedDate(start)}(
+                                    {getWeekDay(start)}
                                     )&nbsp;-&nbsp;
-                                    {calendarState.currentSelection ===
-                                        "startDate" &&
-                                        `${format(
-                                            calendarState.endDate,
-                                            "yyyy.MM.dd",
-                                        )}
-                                        (${
-                                            weekdays[
-                                                calendarState.endDate.getDay()
-                                            ]
-                                        })`}
+                                    {currentSelection === "startDate" &&
+                                        `${getFormattedDate(end)}
+                                        (${getWeekDay(end)})`}
                                 </div>
                             </div>
                         </div>
@@ -207,4 +216,4 @@ function CalendarPicker({ product_id, handleCloseModal }) {
     );
 }
 
-export default CalendarPicker;
+export default Calendar;

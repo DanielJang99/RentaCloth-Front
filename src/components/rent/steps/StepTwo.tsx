@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import { useRent } from "src/states/RentContext";
@@ -6,17 +6,18 @@ import classnames from "classnames";
 import RentStepper from "@components/commons/RentSteps";
 import Hero from "@components/rent/Hero";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import { format } from "date-fns";
-import api from "@src/_axios";
 import router from "next/router";
 import StationSelector from "../StationSelector";
 import { getFormattedPrice } from "@src/utils/price";
+import { getFormattedDate, getWeekDay } from "@src/utils/date";
+import Product from "@src/types/product.type";
+import Stations from "@src/types/station.type";
 
-function StepTwo({ product }) {
+function StepTwo({ product }: { product: Product }): React.ReactElement {
     const { rent, setRent } = useRent();
     const { start_date, end_date, price, days } = rent;
 
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<Stations>({
         receival_station: "",
         return_station: "",
     });
@@ -28,7 +29,7 @@ function StepTwo({ product }) {
             typeof window !== "undefined"
         ) {
             const step1_url = window.location.href.replace("step=2", "step=1");
-            return router.push(step1_url);
+            router.push(step1_url);
         }
     }, [rent]);
 
@@ -69,8 +70,9 @@ function StepTwo({ product }) {
                             <EventAvailableIcon />
                         </div>
                         <div>
-                            {format(start_date, "yyyy.MM.dd")} -{" "}
-                            {format(end_date, "yyyy.MM.dd")}
+                            {getFormattedDate(start_date)}(
+                            {getWeekDay(start_date)}) -{" "}
+                            {getFormattedDate(end_date)}({getWeekDay(end_date)})
                         </div>
                     </div>
                 </div>

@@ -1,20 +1,24 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/rent/Rent.module.css";
 import Modal from "@components/commons/Modal";
-import CalendarPicker from "@components/rent/CalendarPicker";
+import Calendar from "@src/components/rent/Calendar";
 import { useRent } from "src/states/RentContext";
-import { format } from "date-fns";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import { getFormattedDate, getWeekDay } from "@src/utils/date";
 
-function DateSelector({ product_id }) {
+function DateSelector({
+    product_id,
+}: {
+    product_id: string;
+}): React.ReactElement {
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
     const { rent } = useRent();
     const { start_date, end_date } = rent;
 
-    const handleClick = () => {
+    const handleClick = (): void => {
         handleOpen();
     };
 
@@ -31,8 +35,10 @@ function DateSelector({ product_id }) {
                                 <EventAvailableIcon />
                             </div>
                             <div>
-                                {format(start_date, "yyyy.MM.dd")} -{" "}
-                                {format(end_date, "yyyy.MM.dd")}
+                                {getFormattedDate(start_date)}(
+                                {getWeekDay(start_date)}) -{" "}
+                                {getFormattedDate(end_date)}(
+                                {getWeekDay(end_date)})
                             </div>
                         </div>
                     ) : (
@@ -44,7 +50,7 @@ function DateSelector({ product_id }) {
             </div>
             <Modal
                 content={
-                    <CalendarPicker
+                    <Calendar
                         product_id={product_id}
                         handleCloseModal={handleClose}
                     />

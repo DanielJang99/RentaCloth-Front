@@ -8,15 +8,25 @@ import React, {
 import Rent from "@src/types/rent.type";
 
 type RentType = [
-    { rent: Rent | {} },
+    { rent: Rent },
     {
-        setRent?: Dispatch<SetStateAction<Rent>>;
-        resetRent?: () => void;
+        setRent: Dispatch<SetStateAction<Rent>>;
+        resetRent: () => void;
     },
 ];
 
+const initRent = {
+    product_id: "",
+    color: "",
+    size: "",
+    days: 0,
+    price: "",
+    receival_station: "",
+    return_station: "",
+};
+
 const RentContext = createContext<RentType>([
-    { rent: {} },
+    { rent: initRent },
     {
         setRent: () => {},
         resetRent: () => {},
@@ -24,29 +34,9 @@ const RentContext = createContext<RentType>([
 ]);
 
 export const RentProvider = ({ children }: { children: React.ReactNode }) => {
-    const [rent, setRent] = useState({
-        product_id: "",
-        color: "",
-        size: "",
-        days: 0,
-        price: "",
-        receival_station: "",
-        return_station: "",
-        start_date: "",
-        end_date: "",
-    });
+    const [rent, setRent] = useState(initRent);
     const resetRent = () => {
-        setRent({
-            product_id: "",
-            color: "",
-            size: "",
-            days: 0,
-            price: "",
-            receival_station: "",
-            return_station: "",
-            start_date: "",
-            end_date: "",
-        });
+        setRent(initRent);
     };
     const value = {
         state: { rent },
@@ -60,8 +50,9 @@ export const RentProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useRent = () => {
-    const [rent, rentActions] = useContext(RentContext);
-    if (!rent || !rentActions) throw new Error("Cannot find rentContext");
+    const [rentState, rentActions] = useContext(RentContext);
+    if (!rentState || !rentActions) throw new Error("Cannot find rentContext");
+    const { rent } = rentState;
     const { setRent, resetRent } = rentActions;
     return {
         rent,

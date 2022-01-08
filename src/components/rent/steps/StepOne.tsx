@@ -7,8 +7,9 @@ import DateSelector from "@components/rent/DateSelector";
 import { useRent } from "src/states/RentContext";
 import classnames from "classnames";
 import { useRouter } from "next/router";
+import StepProps from "@src/types/step.type";
 
-function StepOne({ product, color, size }) {
+function StepOne({ product, color, size }: StepProps) {
     const router = useRouter();
 
     const { rent, setRent } = useRent();
