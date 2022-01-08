@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "@styles/product/Product.module.css";
 
-function ProductAvailability({ isAvailable }) {
+function ProductAvailability({
+    isAvailable,
+}: {
+    isAvailable: boolean;
+}): React.ReactElement {
     return isAvailable ? (
         <div className={styles.product_availability_true}>대여 가능</div>
     ) : (

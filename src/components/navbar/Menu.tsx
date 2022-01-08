@@ -7,19 +7,19 @@ import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 import api from "@src/_axios";
 
-function Menu() {
+function Menu(): React.ReactElement {
     const router = useRouter();
 
     const [isAdmin, setIsAdmin] = useState(false);
     const [open, setOpen] = useState(false);
     const { logined } = useAuth();
 
-    const toggleDrawer = () => () => {
+    const toggleDrawer = () => (): void => {
         setOpen(!open);
     };
 
     useEffect(() => {
-        const fetchIsUserAdmin = async (uid) => {
+        const fetchIsUserAdmin = async (uid: string | null) => {
             const res = await api.get(`/users/admin/${uid}`);
             if (res.data) {
                 setIsAdmin(true);

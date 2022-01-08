@@ -4,7 +4,7 @@ import styles from "@styles/product/Rental.module.css";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
@@ -17,7 +17,15 @@ const StyledBox = styled(Box)(() => ({
     backgroundColor: "#fff",
 }));
 
-function RentalBtn(props) {
+interface RentalBtnInterface {
+    product_id: string;
+    isAvailable: boolean;
+    colors: string[];
+    sizes: string[];
+    window: any;
+}
+
+function RentalBtn(props: RentalBtnInterface): React.ReactElement {
     const router = useRouter();
     const { window, product_id, isAvailable, colors, sizes } = props;
 
@@ -29,11 +37,11 @@ function RentalBtn(props) {
         size: undefined,
     });
 
-    const toggleCta = (newOpen) => () => {
+    const toggleCta = (newOpen: boolean) => (): void => {
         setOpen(newOpen);
     };
 
-    const handleChange = (event, type) => {
+    const handleChange = (event: SelectChangeEvent<unknown>, type: string) => {
         const val = event.target.value;
         setInput({
             ...input,
@@ -60,8 +68,6 @@ function RentalBtn(props) {
                             anchor="bottom"
                             open={open}
                             onClose={toggleCta(false)}
-                            onOpen={toggleCta(true)}
-                            disableSwipeToOpen={false}
                             ModalProps={{
                                 keepMounted: true,
                             }}

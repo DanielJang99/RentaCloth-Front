@@ -2,7 +2,11 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Card, CardMedia } from "@mui/material";
 
-function ProductCarousel({ image_urls }) {
+function ProductCarousel({
+    image_urls,
+}: {
+    image_urls: string[];
+}): React.ReactElement {
     return (
         <>
             {typeof window !== "undefined" && image_urls && (
