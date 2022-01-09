@@ -11,6 +11,7 @@ import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/signup/Signup.module.css";
 import classNames from "classnames";
 import { Terms } from "@src/types/terms.type";
+import SignUp from "@src/types/signup.type";
 
 function Signup() {
     const router = useRouter();
@@ -28,7 +29,7 @@ function Signup() {
     const [modalMessage, setModalMessage] = useState<
         React.ReactElement | string
     >(<></>);
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<SignUp>({
         name: "",
         password: "",
         checkPassword: "",

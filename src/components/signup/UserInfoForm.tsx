@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styles from "@styles/signup/UserInfoForm.module.css";
+import SignUp from "@src/types/signup.type";
 
-function UserInfoForm({ inputs, setInputs, setInputsValidate }) {
+interface UserInfoFormProps {
+    inputs: SignUp;
+    setInputs: React.Dispatch<React.SetStateAction<SignUp>>;
+    setInputsValidate: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function UserInfoForm({
+    inputs,
+    setInputs,
+    setInputsValidate,
+}: UserInfoFormProps) {
     const [passwordMsg, setPasswordMsg] = useState("");
     const { name, password, checkPassword, phone, email } = inputs;
 
@@ -9,18 +20,21 @@ function UserInfoForm({ inputs, setInputs, setInputsValidate }) {
         setInputsValidate(validateInputs());
     }, [name, password, checkPassword, phone, email]);
 
-    const validateInputs = () => {
-        return (
+    const validateInputs = (): boolean => {
+        if (
             name &&
             password &&
             checkPassword &&
             phone &&
             email &&
             password === checkPassword
-        );
+        ) {
+            return true;
+        }
+        return false;
     };
 
-    const onChange = (event) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target;
         setInputs({
             ...inputs,
