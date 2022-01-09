@@ -48,3 +48,5 @@ yarn.lock
 
 .serverless
 .serverless_nextjs
+
+/.vscode
