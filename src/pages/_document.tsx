@@ -1,9 +1,15 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, {
+    Html,
+    Head,
+    Main,
+    NextScript,
+    DocumentContext,
+} from "next/document";
 import Metatags from "@src/components/metatags/Metatags";
 import { GA_TRACKING_ID } from "@src/lib/gtag";
 
 class MyDocument extends Document {
-    static async getInitialProps(ctx) {
+    static async getInitialProps(ctx: DocumentContext) {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps };
     }
