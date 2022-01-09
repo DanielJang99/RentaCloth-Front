@@ -10,7 +10,7 @@ export default interface Product {
     updatedAt: string;
     image_urls: string[];
     is_rental?: boolean;
-    sizes?: string[];
-    colors?: string[];
+    sizes: string[];
+    colors: string[];
     thumbnail: string;
 }

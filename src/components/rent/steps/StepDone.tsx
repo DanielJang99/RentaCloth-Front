@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import api from "@src/_axios";
 import { useRouter } from "next/router";
 import { getIsoDate } from "@src/utils/date";
 import { getFormattedPrice } from "@src/utils/price";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 import Product from "@src/types/product.type";
 
 function StepDone({ product }: { product: Product }): React.ReactElement {

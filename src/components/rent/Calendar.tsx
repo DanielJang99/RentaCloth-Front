@@ -4,7 +4,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import axios from "axios";
 import { getFormattedPrice } from "@src/utils/price";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";

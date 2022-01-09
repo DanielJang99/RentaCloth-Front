@@ -8,7 +8,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { useAuth } from "@src/states/AuthContext";
+import { useAuth } from "@src/states/auth.context";
 import classNames from "classnames";
 import Modal from "@components/commons/Modal";
 import LoginRequriedModal from "../commons/LoginRequriedModal";
@@ -22,12 +22,17 @@ interface RentalBtnInterface {
     isAvailable: boolean;
     colors: string[];
     sizes: string[];
-    window: any;
+    // window: any;
 }
 
-function RentalBtn(props: RentalBtnInterface): React.ReactElement {
+function RentalBtn({
+    product_id,
+    isAvailable,
+    colors,
+    sizes,
+}: RentalBtnInterface): React.ReactElement {
     const router = useRouter();
-    const { window, product_id, isAvailable, colors, sizes } = props;
+    // const { window, product_id, isAvailable, colors, sizes } = props;
 
     const { logined } = useAuth();
 
@@ -50,7 +55,7 @@ function RentalBtn(props: RentalBtnInterface): React.ReactElement {
     };
 
     const container =
-        window !== undefined ? () => window().document.body : undefined;
+        typeof window !== "undefined" ? () => document.body : undefined;
 
     return (
         <>

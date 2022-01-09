@@ -4,7 +4,7 @@ import commons from "@styles/commons/Commons.module.css";
 import Hero from "@components/rent/Hero";
 import RentStepper from "@components/commons/RentSteps";
 import DateSelector from "@components/rent/DateSelector";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 import StepProps from "@src/types/step.type";

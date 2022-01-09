@@ -3,7 +3,7 @@ import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/rent/Rent.module.css";
 import Modal from "@components/commons/Modal";
 import Calendar from "@src/components/rent/Calendar";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { getFormattedDate, getWeekDay } from "@src/utils/date";
 

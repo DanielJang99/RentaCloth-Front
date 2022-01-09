@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useContext, useState, useEffect } from "react";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import classnames from "classnames";

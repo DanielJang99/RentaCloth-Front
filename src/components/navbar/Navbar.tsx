@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/navbar/Navbar.module.css";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 
 import Menu from "@components/navbar/Menu";
 

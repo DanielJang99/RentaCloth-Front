@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "@src/states/AuthContext";
+import { useAuth } from "@src/states/auth.context";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "@styles/navbar/Navbar.module.css";
 import Drawer from "@mui/material/Drawer";

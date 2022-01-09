@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "@styles/rent/Rent.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import { useRent } from "src/states/RentContext";
+import { useRent } from "@src/states/rent.context";
 import classnames from "classnames";
 import RentStepper from "@components/commons/RentSteps";
 import Hero from "@components/rent/Hero";
