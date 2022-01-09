@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Modal from "@components/commons/Modal";
 import styles from "@styles/signup/TermsAndConditions.module.css";
+import { Term } from "@src/types/terms.type";
 
-function TermDetail({ term }) {
-    // const [detail, setDetail] = useState("");
+function TermDetail({ term }: { term: Term }) {
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);

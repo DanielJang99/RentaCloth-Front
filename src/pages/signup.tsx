@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import api from "@src/_axios/index";
 import { useRouter } from "next/router";
 import { useAuth } from "@src/states/AuthContext";
@@ -10,6 +10,7 @@ import CompletionMessage from "@components/signup/CompletionMessage";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/signup/Signup.module.css";
 import classNames from "classnames";
+import { Terms } from "@src/types/terms.type";
 
 function Signup() {
     const router = useRouter();
@@ -24,7 +25,9 @@ function Signup() {
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
-    const [modalMessage, setModalMessage] = useState(null);
+    const [modalMessage, setModalMessage] = useState<
+        React.ReactElement | string
+    >(<></>);
     const [inputs, setInputs] = useState({
         name: "",
         password: "",
@@ -32,18 +35,16 @@ function Signup() {
         phone: "",
         email: "",
     });
-    const [terms, setTerms] = useState({
+    const [terms, setTerms] = useState<Terms>({
         all: false,
-        personalInfoCollection: false,
-        rentaClothTermsAndConditions: false,
-        minAge: false,
-        marketing: false,
+        termsOfUse: false,
+        termsOfPersonalInfo: false,
     });
+
     const [inputsValidate, setInputsValidate] = useState(false);
     const [termsValidate, setTermsValidate] = useState(false);
 
     const { name, password, checkPassword, phone, email } = inputs;
-    const { marketing } = terms;
 
     const handleSubmit = async () => {
         const res = await api.post(`/users`, {
@@ -51,7 +52,6 @@ function Signup() {
             password: password,
             email: email,
             phone: phone,
-            isMarketing: marketing,
         });
         if (res.status == 201) {
             localStorage.setItem("token", res.data.token);
@@ -69,7 +69,7 @@ function Signup() {
     const goNext = async () => {
         const { next } = router.query;
         return next && next !== "undefined"
-            ? router.push(router.query.next)
+            ? router.push(next.toString())
             : router.push("/");
     };
 

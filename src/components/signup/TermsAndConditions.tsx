@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styles from "@styles/signup/TermsAndConditions.module.css";
 import TermDetail from "./TermDetail";
+import { Term, Terms } from "@src/types/terms.type";
 
-function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
-    const { personalInfoCollection, rentaClothTermsAndConditions } = terms;
+interface TermsAndConditionsProps {
+    terms: Terms;
+    setTerms: React.Dispatch<React.SetStateAction<Terms>>;
+    setTermsValidate: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function TermsAndConditions({
+    terms,
+    setTerms,
+    setTermsValidate,
+}: TermsAndConditionsProps) {
+    const { termsOfUse, termsOfPersonalInfo } = terms;
 
     useEffect(() => {
-        if (personalInfoCollection && rentaClothTermsAndConditions) {
+        if (termsOfUse && termsOfPersonalInfo) {
             setTermsValidate(true);
             checkAll(true);
         } else {
@@ -16,18 +27,18 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
                 all: false,
             });
         }
-    }, [personalInfoCollection, rentaClothTermsAndConditions]);
+    }, [termsOfUse, termsOfPersonalInfo]);
 
-    const checkAll = (type) => {
-        setTerms({
+    const checkAll = (type: boolean) => {
+        return setTerms({
             all: type,
-            personalInfoCollection: type,
-            rentaClothTermsAndConditions: type,
+            termsOfUse: type,
+            termsOfPersonalInfo: type,
         });
     };
 
-    const checkTerm = (name) => {
-        setTerms({
+    const checkTerm = (name: Term) => {
+        return setTerms({
             ...terms,
             [name]: !terms[name],
         });
@@ -51,12 +62,10 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
             <div className={styles.checks_container}>
                 <div className={styles.checkbox_wrapper}>
                     <input
-                        name="rentaClothTermsAndConditions"
+                        name="termsOfUse"
                         type="checkbox"
-                        checked={terms.rentaClothTermsAndConditions}
-                        onChange={() =>
-                            checkTerm("rentaClothTermsAndConditions")
-                        }
+                        checked={termsOfUse}
+                        onChange={() => checkTerm("termsOfUse")}
                         className={styles.checkbox}
                     />
                     <label className={styles.checkbox_label}>
@@ -70,10 +79,10 @@ function TermsAndConditions({ terms, setTerms, setTermsValidate }) {
             <div className={styles.checks_container}>
                 <div className={styles.checkbox_wrapper}>
                     <input
-                        name="personalInfoCollection"
+                        name="termsOfPersonalInfo"
                         type="checkbox"
-                        checked={terms.personalInfoCollection}
-                        onChange={() => checkTerm("personalInfoCollection")}
+                        checked={termsOfPersonalInfo}
+                        onChange={() => checkTerm("termsOfPersonalInfo")}
                         className={styles.checkbox}
                     />
                     <label className={styles.checkbox_label}>

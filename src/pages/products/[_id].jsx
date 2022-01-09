@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { useNavbar } from "src/states/NavbarContext";
 import axios from "axios";
 import commons from "@styles/commons/Commons.module.css";
@@ -14,7 +14,7 @@ import { getFormattedPrice } from "@src/utils/price";
 
 function Product({ product }) {
     const router = useRouter();
-    const { setHeader } = useNavbar;
+    const { setHeader } = useNavbar();
     useEffect(() => {
         setHeader("상품 정보");
     }, []);

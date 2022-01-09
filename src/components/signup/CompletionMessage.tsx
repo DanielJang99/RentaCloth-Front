@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "@styles/signup/Signup.module.css";
 
-function CompletionMessage({ goNext }) {
+function CompletionMessage({
+    goNext,
+}: {
+    goNext: () => void;
+}): React.ReactElement {
     return (
         <>
             <div>회원가입을 축하드립니다!</div>

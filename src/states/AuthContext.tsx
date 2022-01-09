@@ -6,12 +6,11 @@ import React, {
     SetStateAction,
     useContext,
 } from "react";
-import api from "@src/_axios/index";
 
 type AuthType = [
     { logined: boolean },
     {
-        setAuthState?:
+        setAuthState:
             | Dispatch<SetStateAction<{ logined: boolean }>>
             | (() => void);
     },
