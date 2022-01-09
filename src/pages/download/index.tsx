@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/intro/Intro.module.css";
 import Modal from "@components/commons/Modal";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 
 function Download() {
     const { setHeader } = useNavbar();

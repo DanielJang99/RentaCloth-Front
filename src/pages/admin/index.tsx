@@ -7,12 +7,17 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import commons from "@styles/commons/Commons.module.css";
 import api from "@src/_axios";
-import { getFormattedDate } from "@src/utils/date";
 import { useRouter } from "next/router";
+import User from "@src/types/user.type";
+import Rent from "@src/types/rent.type";
+
+interface UserRentInterface extends User {
+    rents: Rent[];
+}
 
 function Admin() {
     const router = useRouter();
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState<UserRentInterface[] | []>([]);
     useEffect(() => {
         const fetchUsers = async () => {
             const resp = await api.get("/users/rents");
@@ -21,7 +26,7 @@ function Admin() {
         fetchUsers();
     }, []);
 
-    const handleClick = (user_id) => {
+    const handleClick = (user_id: string) => {
         return router.push(`/admin/user/${user_id}`);
     };
 

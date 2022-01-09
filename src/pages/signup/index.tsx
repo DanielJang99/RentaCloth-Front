@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import api from "@src/_axios/index";
 import { useRouter } from "next/router";
-import { useAuth } from "@src/states/AuthContext";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useAuth } from "@src/states/auth.context";
+import { useNavbar } from "@src/states/navbar.context";
 import UserInfoForm from "@src/components/signup/UserInfoForm";
 import TermsAndConditions from "@src/components/signup/TermsAndConditions";
 import Modal from "@components/commons/Modal";

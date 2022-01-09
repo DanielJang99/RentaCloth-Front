@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavbar } from "src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 import axios from "axios";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/product/Product.module.css";
@@ -11,15 +11,19 @@ import RentalBtn from "@components/product/RentalBtn";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 import { getFormattedPrice } from "@src/utils/price";
+import { default as productType } from "@src/types/product.type";
 
-function Product({ product }) {
+function Product({ product }: { product: productType }) {
     const router = useRouter();
     const { setHeader } = useNavbar();
     useEffect(() => {
         setHeader("상품 정보");
     }, []);
 
-    const getDiscountPercentage = (daily_price, retail_price) => {
+    const getDiscountPercentage = (
+        daily_price: number,
+        retail_price: number,
+    ) => {
         return Math.floor((1 - daily_price / retail_price) * 100);
     };
 
@@ -67,9 +71,15 @@ function Product({ product }) {
                                     )}원`}
                                 </div>
                                 <div className={styles.retail_price}>
-                                    <strike>{`정가: ${getFormattedPrice(
-                                        product.retail_price,
-                                    )}원`}</strike>
+                                    {/* 
+                                        // @ts-ignore */}
+                                    <strike>
+                                        {`정가: ${getFormattedPrice(
+                                            product.retail_price,
+                                        )}원`}
+                                        {/* 
+                                    // @ts-ignore */}
+                                    </strike>
                                 </div>
                             </div>
                             {/* <div>
@@ -101,14 +111,14 @@ function Product({ product }) {
 
 export default Product;
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: { _id: string } }) {
     const product_id = params._id;
     const apiUrl = process.env.NEXT_PUBLIC_API;
     const res = await axios.get(`${apiUrl}/products/${product_id}`);
-    const data = res.data;
+    const productData: productType = res.data.product;
     return {
         props: {
-            product: data.product,
+            product: productData,
         },
     };
 }

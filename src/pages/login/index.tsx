@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavbar } from "@src/states/NavbarContext";
-import { useAuth } from "@src/states/AuthContext";
+import { useNavbar } from "@src/states/navbar.context";
+import { useAuth } from "@src/states/auth.context";
 import api from "@src/_axios/index";
 import { useRouter } from "next/router";
 import commons from "@styles/commons/Commons.module.css";
@@ -16,14 +16,14 @@ function Login() {
         setHeader("로그인");
     }, []);
 
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState<boolean>(false);
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
     const { email, password } = inputs;
 
-    const onChange = (e) => {
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = e.target;
         setInputs({
             ...inputs,
@@ -51,7 +51,7 @@ function Login() {
     const goNext = () => {
         const { next } = router.query;
         return next && next !== "undefined"
-            ? router.push(next)
+            ? router.push(next.toString())
             : router.push("/");
     };
 

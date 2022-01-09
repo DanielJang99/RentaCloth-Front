@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useNavbar } from "@src/states/NavbarContext";
-import { RentProvider } from "@src/states/RentContext";
+import { useNavbar } from "@src/states/navbar.context";
+import { RentProvider } from "@src/states/rent.context";
 import StepOne from "@components/rent/steps/StepOne";
 import StepTwo from "@components/rent/steps/StepTwo";
 import StepThree from "@src/components/rent/steps/StepThree";

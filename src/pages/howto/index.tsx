@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "@styles/howto/HowTo.module.css";
 import commons from "@styles/commons/Commons.module.css";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 
 function HowTo() {
     const { setHeader } = useNavbar();

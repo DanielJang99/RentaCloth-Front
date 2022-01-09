@@ -4,7 +4,7 @@ import styles from "@styles/category/Category.module.css";
 import commons from "@styles/commons/Commons.module.css";
 import Link from "next/link";
 import ProductGrid from "@components/commons/ProductGrid";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 import classnames from "classnames";
 import Product from "@src/types/product.type";
 

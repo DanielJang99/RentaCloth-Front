@@ -7,7 +7,7 @@ import axios from "axios";
 import ProductGrid from "@components/commons/ProductGrid";
 import WarningIcon from "@mui/icons-material/Warning";
 import SearchIcon from "@mui/icons-material/Search";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 import classnames from "classnames";
 
 function ProductsBySearch() {
@@ -38,7 +38,7 @@ function ProductsBySearch() {
         >
             <div className={commons.section_container}>
                 <div className={styles.search_wrapper}>
-                    <Search searchQuery={query} />
+                    <Search searchQuery={query?.toString()} />
                 </div>
                 <div className={styles.search_total}>
                     {query && products && `총 ${products.length}개의 검색결과`}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RentInfo from "@src/components/myinfo/RentInfo";
-import { useNavbar } from "@src/states/NavbarContext";
+import { useNavbar } from "@src/states/navbar.context";
 import commons from "@styles/commons/Commons.module.css";
 import styles from "@styles/myinfo/MyInfo.module.css";
 import api from "@src/_axios";
