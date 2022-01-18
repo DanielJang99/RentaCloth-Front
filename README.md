@@ -9,14 +9,14 @@
   <img src='https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white'>
   <img src='https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white'/>
   <img src='https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=material-ui&logoColor=white'/>
-    <img src='https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white'>
+    <img src='https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white'>
 </p>
 
 ## 🎅 렌타클로스 서비스 소개
 
 Link: https://rentacloth.net
 
-### 🧥 렌타클로스는 남성들은 위한 패션 의류 렌탈 서비스입니다. <br>원하는 옷을 예약하고 인근 지하철역 물품 보관함에서 즉시 제품을 받아보세요.
+### 🧥 인기 쇼핑몰 상품을 터미널 무인 보관함에서 찾는 남성 의류 렌탈 서비스
 
 _q: 어떤 의류 상품들을 대여할 수 있나요?_<br>
 **A: 렌타클로스에서 제공하는 제품들은 20대 남성들이 가장 선호하는 무신사의 월간 베스트 브랜드 제품들로 직접 사입하고 있습니다.**
@@ -26,6 +26,10 @@ _q: 얼마 동안 대여할 수 있나요?_<br>
 
 _q: 의류 관리는 어떻게 하고 있나요?_<br>
 **A: 렌타클로스의 모든 의류는 국내 세탁 업계 1위 크린토피아 청량리한신점과의 제휴를 통해 고품질의 세탁 과정을 거칩니다.**
+
+## 💰 Business Model Canvas
+
+<img src="./public/readme/business_model.png">
 
 ## 🏅 수상 경력
 
@@ -51,6 +55,7 @@ _q: 의류 관리는 어떻게 하고 있나요?_<br>
 -   라이브러리(패키지) :
     -   react-date-range: 캘린더 기능
     -   next-pwa: 웹을 PWA로 전환
+    -   serverless: 서버리스 배포
 -   분석 툴:
     -   Hotjar: 웹 로그, 히트맵
     -   Google Analytics: 방문자
