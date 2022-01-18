@@ -3,6 +3,7 @@ import axios from "axios";
 const handleRequestFullfilled = (config) => {
     const token = localStorage.getItem("token");
     config.headers.Authorization = `Bearer ${token}`;
+    console.log(config);
     // if (JSON.stringify(config) === JSON.stringify(requestCache)) {
     //     throw new Error("skip");
     // } else {
@@ -32,8 +33,8 @@ export const handleRespRejected = (error) => {
     };
 };
 
-// const apiUrl = process.env.NEXT_PUBLIC_API;
-const apiUrl = "https://api.rentacloth.net";
+const apiUrl = process.env.NEXT_PUBLIC_API;
+// const apiUrl = "https://api.rentacloth.net";
 const api = axios.create({
     baseURL: apiUrl,
     timeout: 100000,
