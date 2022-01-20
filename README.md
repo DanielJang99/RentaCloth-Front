@@ -12,32 +12,28 @@
     <img src='https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white'>
 </p>
 
+## 목차
+
+[1. 서비스 소개](#🎅-렌타클로스-서비스-소개)
+[2. 기술 스택](#📚-기술-스택)
+[3. 주요 기능](#📌-주요-기능)
+[4. 수상 경력](#🏅-수상-경력)
+[5. Business Model Canvas](##💰-Business-Model-Canvas)
+
 ## 🎅 렌타클로스 서비스 소개
 
 Link: https://rentacloth.net
 
 ### 🧥 인기 쇼핑몰 상품을 터미널 무인 보관함에서 찾는 남성 의류 렌탈 서비스
 
-_q: 어떤 의류 상품들을 대여할 수 있나요?_<br>
+_Q: 어떤 의류 상품들을 대여할 수 있나요?_<br>
 **A: 렌타클로스에서 제공하는 제품들은 20대 남성들이 가장 선호하는 무신사의 월간 베스트 브랜드 제품들로 직접 사입하고 있습니다.**
 
-_q: 얼마 동안 대여할 수 있나요?_<br>
+_Q: 얼마 동안 대여할 수 있나요?_<br>
 **A: 제품은 수령일로부터 최소 4일 ~ 최대 11일까지 이용하실 수 있어요. 대여 일수가 길어질수록 하루 평균 대여비가 저렴합니다.**
 
-_q: 의류 관리는 어떻게 하고 있나요?_<br>
+_Q: 의류 관리는 어떻게 하고 있나요?_<br>
 **A: 렌타클로스의 모든 의류는 국내 세탁 업계 1위 크린토피아 청량리한신점과의 제휴를 통해 고품질의 세탁 과정을 거칩니다.**
-
-## 💰 Business Model Canvas
-
-<img src="./public/readme/business_model.png">
-
-## 🏅 수상 경력
-
-> 1. 2021 Startup Express Summer Season 대상
-> 2. 2021 KU Campus CEO 장려상
-> 3. 2021 고려대학교 캡스톤 디자인 경진대회 장려상
-> 4. 2021 K-스타트업 학생 창업 유망팀 300 선정
-> 5. 2021 고려대학교 창업동아리 지원사업 선정
 
 ## 📚 기술 스택
 
@@ -128,3 +124,15 @@ JWT 토큰 방식으로 토큰을 발급받고 LocalStorage에 저장하여 사�
 <img width="500" src="./public/readme/step2.png"></img>
 <img width="500" src="./public/readme/step3.png"></img>
 </details>
+
+## 🏅 수상 경력
+
+> 1. 2021 Startup Express Summer Season 대상
+> 2. 2021 KU Campus CEO 장려상
+> 3. 2021 고려대학교 캡스톤 디자인 경진대회 장려상
+> 4. 2021 K-스타트업 학생 창업 유망팀 300 선정
+> 5. 2021 고려대학교 창업동아리 지원사업 선정
+
+## 💰 Business Model Canvas
+
+<img src="./public/readme/business_model.png">
